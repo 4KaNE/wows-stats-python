@@ -12,6 +12,7 @@
   </script>
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
+  <script src="/static/script/dragtable.js"></script>
 </head>
 <body>
 
@@ -28,17 +29,18 @@
     <a href="#tab4" class="tab4" onclick="ChangeTab('tab3'); return false;">設定</a>
   </p>
   <div id="tab1" class="tab">
-    <h1>戦闘中の敵・味方プレイヤーの戦績を表示します。</h1>
-    <div id="playerNo">
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-      </ul>
-    </div>
+    <table>
+      <tr>
+        <th>名前</th>
+        <th>Tier</th>
+        <th>艦名</th>
+      </tr>
+      <tr>
+        <td>Akane_Kotonoha</td>
+        <td>8</td>
+        <td>Shokaku</td>
+      </tr>
+    </table>
   </div>
 
   <div id="tab2" class="tab">
