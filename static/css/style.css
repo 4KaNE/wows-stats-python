@@ -18,10 +18,38 @@ p.tabs a {
    font-size:12px;
 }
 /* ▼ タブごとの配色設定 */
-p.tabs a.tab1 {text-decoration:none; background-color:#fafafa;border-right:1px solid #dcdcdc;border-left:1px solid #dcdcdc;border-top: 3px solid rgba(170, 0, 0, 0.85);  color: #666; font-weight:600;}
-p.tabs a.tab2 {text-decoration:none; background-color:#fafafa;border-right:1px solid #dcdcdc;border-left:1px solid #dcdcdc;border-top: 3px solid rgba(0, 170, 0, 0.85);  color: #666; font-weight:600;}
-p.tabs a.tab3 {text-decoration:none; background-color:#fafafa;border-right:1px solid #dcdcdc;border-left:1px solid #dcdcdc;border-top: 3px solid rgba(0, 0, 170, 0.85);  color: #666; font-weight:600;}
-p.tabs a.tab4 {text-decoration:none; background-color:#fafafa;border-right:1px solid #dcdcdc;border-left:1px solid #dcdcdc;border-top: 3px solid rgba(0, 0, 170, 0.85);  color: #666; font-weight:600;}
+p.tabs a.tab1 {
+  text-decoration:none; 
+  background-color:#fafafa;
+  border-right:1px solid #dcdcdc;
+  border-left:1px solid #dcdcdc;
+  border-top: 3px solid rgba(170, 0, 0, 0.85);  
+  color: #666; font-weight:600;
+}
+p.tabs a.tab2 {
+  text-decoration:none; 
+  background-color:#fafafa;
+  border-right:1px solid #dcdcdc;
+  border-left:1px solid #dcdcdc;
+  border-top: 3px solid rgba(0, 170, 0, 0.85);  
+  color: #666; font-weight:600;
+}
+p.tabs a.tab3 {
+  text-decoration:none; 
+  background-color:#fafafa;
+  border-right:1px solid #dcdcdc;
+  border-left:1px solid #dcdcdc;
+  border-top: 3px solid rgba(0, 0, 170, 0.85);  
+  color: #666; font-weight:600;
+}
+p.tabs a.tab4 {
+  text-decoration:none; 
+  background-color:#fafafa;
+  border-right:1px solid #dcdcdc;
+  border-left:1px solid #dcdcdc;
+  border-top: 3px solid rgba(0, 0, 170, 0.85);  
+  color: #666; font-weight:600;
+}
 p.tabs a:hover {opacity:0.7;filter:alpha(opacity=70);}
 /* ▼ タブ中身のボックス */
 div.tab {
@@ -31,16 +59,40 @@ div.tab {
    clear: right;
 }
 /* ▼ 各ボックスの配色設定 */
-div#tab1 { border: 2px solid #DDD; background-color: #27292f; }
-div#tab2 { border: 2px solid #DDD; background-color: #27292f; }
-div#tab3 { border: 2px solid #DDD; background-color: #27292f; }
-div#tab4 { border: 2px solid #DDD; background-color: #27292f; }
-div.tab p { margin: 0.5em; }
+div#tab1 { 
+  border: 2px solid #DDD; 
+  background-color: #27292f; 
+}
+div#tab2 { 
+  border: 2px solid #DDD; 
+  background-color: #27292f; 
+}
+div#tab3 { 
+  border: 2px solid #DDD; 
+  background-color: #27292f; 
+}
+div#tab4 { 
+  border: 2px solid #DDD; 
+  background-color: #27292f; 
+}
+div.tab p { 
+  margin: 0.5em; 
+}
 
 #sortable-li {
 	padding: 0;
 	list-style-type: none;
-	width: 50%;}
+  width: 50%;}
+
+/* ▼ 表の書式設定 */
+table {
+  background-color: white;
+  border-collapse: collapse;
+}
+table th, table td {
+  border: solid 1px black;
+  /*実線 1px 黒*/
+  }
 
 h1 {
   color: white;
