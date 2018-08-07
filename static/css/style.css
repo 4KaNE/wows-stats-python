@@ -86,13 +86,21 @@ div.tab p {
 
 /* ▼ 表の書式設定 */
 table {
-  background-color: white;
+  background-color: #122B2E;
   border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-left: 3px;
 }
 table th, table td {
-  border: solid 1px black;
+  border: solid 1px white;
+  color: white;
   /*実線 1px 黒*/
   }
+
+#clan_th {
+  width: 60px;
+}
 
 h1 {
   color: white;
