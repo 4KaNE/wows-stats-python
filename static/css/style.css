@@ -221,6 +221,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;
 }
+/* 戦闘数列 */
+#battlenumber_th {
+  width: 55px;
+  text-align: center;
+}
+#battlenumber_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
 h1 {
   color: white;
