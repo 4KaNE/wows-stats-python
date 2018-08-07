@@ -45,7 +45,7 @@
           <th id="shipname_th">艦名</th>
           <th id="combatpower_th">戦闘力</th>
           <th id="damage_th">ダメージ</th>
-          <th>K/D</th>
+          <th id="kd_th">K/D</th>
           <th>勝率</th>
           <th>生存率</th>
           <th>撃墜</th>
@@ -68,7 +68,7 @@
             document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
             document.write('<td id="combatpower_td">10,000,000</td>');
             document.write('<td id="damage_td">100,000</td>');
-            document.write('<td>999.9</td>');
+            document.write('<td id="kd_td">999.9</td>');
             document.write('<td>100.0%</td>');
             document.write('<td>100%|100%</td>');
             document.write('<td>99.9</td>');
@@ -98,7 +98,7 @@
             <th id="shipname_th">艦名</th>
             <th id="combatpower_th">戦闘力</th>
             <th id="damage_th">ダメージ</th>
-            <th>K/D</th>
+            <th id="kd_th">K/D</th>
             <th>勝率</th>
             <th>生存率</th>
             <th>撃墜</th>
@@ -121,7 +121,7 @@
               document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
               document.write('<td id="combatpower_td">10,000,000</td>');
               document.write('<td id="damage_td">100,000</td>');
-              document.write('<td>999.9</td>');
+              document.write('<td id="kd_td">999.9</td>');
               document.write('<td>100.0%</td>');
               document.write('<td>100%|100%</td>');
               document.write('<td>99.9</td>');

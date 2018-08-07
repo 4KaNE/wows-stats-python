@@ -171,6 +171,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;
 }
+/* K/D列 */
+#kd_th {
+  width: 45px;
+  text-align: center;
+}
+#kd_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
 h1 {
   color: white;
