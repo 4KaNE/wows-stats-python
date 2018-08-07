@@ -110,32 +110,46 @@ table th, table td {
   width: 55px;
   text-align: center;
 }
-#clan_tr {
+#clan_td {
   text-align: center;
 }
 /* IGN列 */
 #ign_th {
-  width: 170px;
+  width: 175px;
   text-align: center;
 }
-#ign_tr {
+#ign_td {
   text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 /* Tier列 */
 #tier_th {
-  width: 15px;
+  width: 22px;
   text-align: center;
 }
-#tier_tr {
+#tier_td {
   text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 /* 艦種列 */
 #shipclass_th {
   width: 50px;
   text-align: center;
 }
-#shipclass_tr {
+#shipclass_td {
   text-align: center;
+}
+/* 艦名列 */
+#shipname_th {
+  width: 180px;
+  text-align: center;
+}
+#shipname_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 h1 {

@@ -42,7 +42,7 @@
           <th id="ign_th">IGN</th>
           <th id="tier_th">T</th>
           <th id="shipclass_th">艦種</th>
-          <th>艦名</th>
+          <th id="shipname_th">艦名</th>
           <th>戦闘力</th>
           <th>ダメージ</th>
           <th>K/D</th>
@@ -61,11 +61,11 @@
         <script type="text/javascript">
           for (var i = 1; i <= 12; i++){
             document.write('<tr>')
-            document.write('<td id="clan_tr">CLANA</td>');
-            document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
-            document.write('<td id="tier_tr">10</td>');
-            document.write('<td id="shipclass_tr">CV</td>');
-            document.write('<td>SHOUKAKU</td>');
+            document.write('<td id="clan_td">CLANA</td>');
+            document.write('<td id="ign_td">ABCDEFGHIJKLMNOPQR</td>');
+            document.write('<td id="tier_td">10</td>');
+            document.write('<td id="shipclass_td">CV</td>');
+            document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
             document.write('<td>10,000,000</td>');
             document.write('<td>100,000</td>');
             document.write('<td>999.9</td>');
@@ -95,7 +95,7 @@
             <th id="ign_th">IGN</th>
             <th id="tier_th">T</th>
             <th id="shipclass_th">艦種</th>
-            <th>艦名</th>
+            <th id="shipname_th">艦名</th>
             <th>戦闘力</th>
             <th>ダメージ</th>
             <th>K/D</th>
@@ -114,11 +114,11 @@
           <script type="text/javascript">
             for (var i = 1; i <= 12; i++){
               document.write('<tr>')
-              document.write('<td id="clan_tr">CLANA</td>');
-              document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
-              document.write('<td id="tier_tr">10</td>');
-              document.write('<td id="shipclass_tr">CV</td>');
-              document.write('<td>SHOUKAKU</td>');
+              document.write('<td id="clan_td">CLANA</td>');
+              document.write('<td id="ign_td">ABCDEFGHIJKLMNOPQR</td>');
+              document.write('<td id="tier_td">10</td>');
+              document.write('<td id="shipclass_td">CV</td>');
+              document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
               document.write('<td>10,000,000</td>');
               document.write('<td>100,000</td>');
               document.write('<td>999.9</td>');
