@@ -181,6 +181,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;
 }
+/* 勝率列 */
+#winrate_th {
+  width: 55px;
+  text-align: center;
+}
+#winrate_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;  
+}
 
 h1 {
   color: white;
