@@ -12,6 +12,7 @@
   </script>
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
+  
 </head>
 <body>
 
@@ -27,18 +28,122 @@
     <a href="#tab3" class="tab3" onclick="ChangeTab('tab3'); return false;">艦別戦績</a>
     <a href="#tab4" class="tab4" onclick="ChangeTab('tab3'); return false;">設定</a>
   </p>
+  <!-- 戦闘タブ -->
   <div id="tab1" class="tab">
-    <h1>戦闘中の敵・味方プレイヤーの戦績を表示します。</h1>
-    <div id="playerNo">
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-      </ul>
-    </div>
+    <table id="description_table">
+      <tr>
+        <td id="description_team">味方</td>
+        <td id="description_ship">艦別戦績</td>
+        <td id="description_all">全体戦績</td>
+      </tr>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th id="clan_th">CLAN</th>
+          <th id="ign_th">IGN</th>
+          <th id="tier_th">T</th>
+          <th id="shipclass_th">艦種</th>
+          <th id="shipname_th">艦名</th>
+          <th id="combatpower_th">戦闘力</th>
+          <th id="combatpower_th">戦闘力2</th>
+          <th id="damage_th">ダメージ</th>
+          <th id="kd_th">K/D</th>
+          <th id="winrate_th">勝率</th>
+          <th id="survive_th">生存率</th>
+          <th id="shootdown_th">撃墜</th>
+          <th id="exp_th">経験値</th>
+          <th id="battlenumber_th">戦闘数</th>
+          <th id="rank_th">ランク</th>
+          <th id="winrate_th">勝率</th>
+          <th id="exp_th">経験値</th>
+          <th id="battlenumber_th">戦闘数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script type="text/javascript">
+          for (var i = 1; i <= 12; i++){
+            document.write('<tr>')
+            document.write('<td id="clan_td">CLANA</td>');
+            document.write('<td id="ign_td">ABCDEFGHIJKLMNOPQR</td>');
+            document.write('<td id="tier_td">10</td>');
+            document.write('<td id="shipclass_td">CV</td>');
+            document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
+            document.write('<td id="combatpower_td">10,000,000</td>');
+            document.write('<td id="combatpower_td">10,000,000</td>');
+            document.write('<td id="damage_td">100,000</td>');
+            document.write('<td id="kd_td">999.9</td>');
+            document.write('<td id="winrate_td">100.0%</td>');
+            document.write('<td id="survive_td">100%|100%</td>');
+            document.write('<td id="shootdown_td">99.9</td>');
+            document.write('<td id="exp_td">9,999</td>');
+            document.write('<td id="battlenumber_td">99,999</td>');
+            document.write('<td id="rank_td">23→23</td>');
+            document.write('<td id="winrate_td">100.0%</td>');
+            document.write('<td id="exp_td">9,999</td>');
+            document.write('<td id="battlenumber_td">99,999</td>');
+            document.write('</tr>')
+          }
+        </script>
+      </tbody>
+    </table>
+    <table id="description_table">
+      <tr>
+        <td id="description_team">敵</td>
+        <td id="description_ship">艦別戦績</td>
+        <td id="description_all">全体戦績</td>
+      </tr>
+    </table>
+    <table>
+        <thead>
+          <tr>
+            <th id="clan_th">CLAN</th>
+            <th id="ign_th">IGN</th>
+            <th id="tier_th">T</th>
+            <th id="shipclass_th">艦種</th>
+            <th id="shipname_th">艦名</th>
+            <th id="combatpower_th">戦闘力</th>
+            <th id="combatpower_th">戦闘力2</th>
+            <th id="damage_th">ダメージ</th>
+            <th id="kd_th">K/D</th>
+            <th id="winrate_th">勝率</th>
+            <th id="survive_th">生存率</th>
+            <th id="shootdown_th">撃墜</th>
+            <th id="exp_th">経験値</th>
+            <th id="battlenumber_th">戦闘数</th>
+            <th id="rank_th">ランク</th>
+            <th id="winrate_th">勝率</th>
+            <th id="exp_th">経験値</th>
+            <th id="battlenumber_th">戦闘数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script type="text/javascript">
+            for (var i = 1; i <= 12; i++){
+              document.write('<tr>')
+              document.write('<td id="clan_td">CLANA</td>');
+              document.write('<td id="ign_td">ABCDEFGHIJKLMNOPQR</td>');
+              document.write('<td id="tier_td">10</td>');
+              document.write('<td id="shipclass_td">CV</td>');
+              document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
+              document.write('<td id="combatpower_td">10,000,000</td>');
+              document.write('<td id="combatpower_td">10,000,000</td>');
+              document.write('<td id="damage_td">100,000</td>');
+              document.write('<td id="kd_td">999.9</td>');
+              document.write('<td id="winrate_td">100.0%</td>');
+              document.write('<td id="survive_td">100%|100%</td>');
+              document.write('<td id="shootdown_td">99.9</td>');
+              document.write('<td id="exp_td">9,999</td>');
+              document.write('<td id="battlenumber_td">99,999</td>');
+              document.write('<td id="rank_td">23→23</td>');
+              document.write('<td id="winrate_td">100.0%</td>');
+              document.write('<td id="exp_td">9,999</td>');
+              document.write('<td id="battlenumber_td">99,999</td>');
+              document.write('</tr>')
+            }
+          </script>
+        </tbody>
+      </table>
   </div>
 
   <div id="tab2" class="tab">
@@ -61,7 +166,14 @@
   ChangeTab('tab1');
 </script>
 
-
-
 </body>
+
+<footer>
+    <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Please send request and bug report to 
+        <a href="https://github.com/4KaNE/wows-stats-python">GitHub</a>
+        or <a href="https://twitter.com/4KaNE_NiER">Twitter</a>.</p>
+</footer>
+
 </html>

@@ -18,4 +18,4 @@ def static(file_path):
     """css"""
     return static_file(file_path, root='./static')
 
-run(host='localhost', port=8080)
+run(host='localhost', port=8080,  reloader=True, debug=True)
