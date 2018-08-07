@@ -12,7 +12,7 @@
   </script>
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
-  <script src="/static/script/dragtable.js"></script>
+  
 </head>
 <body>
 
@@ -30,16 +30,48 @@
   </p>
   <div id="tab1" class="tab">
     <table>
-      <tr>
-        <th>名前</th>
-        <th>Tier</th>
-        <th>艦名</th>
-      </tr>
-      <tr>
-        <td>Akane_Kotonoha</td>
-        <td>8</td>
-        <td>Shokaku</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>CLAN</th>
+          <th>IGN</th>
+          <th>Tier</th>
+          <th>艦種</th>
+          <th>艦名</th>
+          <th>戦闘力</th>
+          <th>ダメージ</th>
+          <th>K/D</th>
+          <th>勝率</th>
+          <th>生存率</th>
+          <th>撃墜率</th>
+          <th>経験値</th>
+          <th>戦闘数</th>
+          <th>ランク</th>
+          <th>勝率</th>
+          <th>経験値</th>
+          <th>戦闘数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SWAN</td>
+          <td>Akane_Kotonoha</td>
+          <td>8</td>
+          <td>CV</td>
+          <td>SHOUKAKU</td>
+          <td>530,000</td>
+          <td>60,000</td>
+          <td>11.5</td>
+          <td>64.5%</td>
+          <td>90%|60%</td>
+          <td>17.5</td>
+          <td>1,500</td>
+          <td>490</td>
+          <td>23->7</td>
+          <td>57.88%</td>
+          <td>1,400</td>
+          <td>5,300</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 
