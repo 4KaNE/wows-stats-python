@@ -30,6 +30,11 @@
   </p>
   <!-- 戦闘タブ -->
   <div id="tab1" class="tab">
+    <table id="description_table">
+      <tr>
+        <td>見方</td>
+      </tr>
+    </table>
     <table>
       <thead>
         <tr>
@@ -54,7 +59,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>SWANA</td>
+          <td id="clan_tr">SWANA</td>
           <td>AAAAAAAAAAAAAAAA</td>
           <td>8</td>
           <td>CV</td>
@@ -282,6 +287,11 @@
           <td>5,300</td>
         </tr>
       </tbody>
+    </table>
+    <table id="description_table">
+      <tr>
+        <td>敵</td>
+      </tr>
     </table>
     <table>
         <thead>
@@ -558,7 +568,14 @@
   ChangeTab('tab1');
 </script>
 
-
-
 </body>
+
+<footer>
+    <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Please send request and bug report to 
+        <a href="https://github.com/4KaNE/wows-stats-python">GitHub</a>
+        or <a href="https://twitter.com/4KaNE_NiER">Twitter</a></p>
+</footer>
+
 </html>

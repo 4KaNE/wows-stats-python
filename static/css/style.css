@@ -89,9 +89,13 @@ table {
   background-color: #122B2E;
   border-collapse: collapse;
   font-size: 14px;
-  margin-top: 3px;
   margin-left: 3px;
 }
+
+#description_table{
+  margin-top: 3px;
+}
+
 table th, table td {
   border: solid 1px white;
   color: white;
@@ -99,7 +103,12 @@ table th, table td {
   }
 
 #clan_th {
-  width: 60px;
+  width: 55px;
+  text-align: center;
+}
+
+#clan_tr {
+  text-align: center;
 }
 
 h1 {
@@ -112,4 +121,28 @@ h2{
 li {
   color: white;
   list-style: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  text-align: center;
+  width: 1350px;
+}
+footer #license {
+  color: white;
+  font-size: 10px;
+}
+
+footer a:link { 
+  color: white; 
+}
+footer a:visited { 
+  color: white; 
+}
+footer a:hover {
+  color: #ff0000; 
+}
+footer a:active { 
+  color: #ff8000; 
 }
