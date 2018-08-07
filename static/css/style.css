@@ -151,6 +151,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;
 }
+/* 戦闘力列 */
+#combatpower_th {
+  width: 80px;
+  text-align: center;
+}
+#combatpower_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
 h1 {
   color: white;
