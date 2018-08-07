@@ -203,10 +203,20 @@ table th, table td {
 }
 /* 撃墜列 */
 #shootdown_th {
-  width: 36px;
+  width: 35px;
   text-align: center;
 }
 #shootdown_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+/* 経験値列 */
+#exp_th {
+  width: 45px;
+  text-align: center;
+}
+#exp_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
