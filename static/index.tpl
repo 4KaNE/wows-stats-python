@@ -40,7 +40,7 @@
         <tr>
           <th id="clan_th">CLAN</th>
           <th id="ign_th">IGN</th>
-          <th>Tier</th>
+          <th id="tier_th">T</th>
           <th>艦種</th>
           <th>艦名</th>
           <th>戦闘力</th>
@@ -61,9 +61,9 @@
         <script type="text/javascript">
           for (var i = 1; i <= 12; i++){
             document.write('<tr>')
-            document.write('<td id="clan_tr">SWANA</td>');
-            document.write('<td id="ign_tr">AAAAAAAAAAAAAAAAAA</td>');
-            document.write('<td>8</td>');
+            document.write('<td id="clan_tr">CLANA</td>');
+            document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
+            document.write('<td id="tier_tr">10</td>');
             document.write('<td>CV</td>');
             document.write('<td>SHOUKAKU</td>');
             document.write('<td>530,000</td>');
@@ -93,7 +93,7 @@
           <tr>
             <th id="clan_th">CLAN</th>
             <th id="ign_th">IGN</th>
-            <th>Tier</th>
+            <th id="tier_th">T</th>
             <th>艦種</th>
             <th>艦名</th>
             <th>戦闘力</th>
@@ -114,9 +114,9 @@
           <script type="text/javascript">
             for (var i = 1; i <= 12; i++){
               document.write('<tr>')
-              document.write('<td id="clan_tr">SWANA</td>');
-              document.write('<td id="ign_tr">AAAAAAAAAAAAAAAAAA</td>');
-              document.write('<td>8</td>');
+              document.write('<td id="clan_tr">CLANA</td>');
+              document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
+              document.write('<td id="tier_tr">10</td>');
               document.write('<td>CV</td>');
               document.write('<td>SHOUKAKU</td>');
               document.write('<td>530,000</td>');

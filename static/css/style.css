@@ -113,13 +113,21 @@ table th, table td {
 #clan_tr {
   text-align: center;
 }
-/* ING列 */
+/* IGN列 */
 #ign_th {
   width: 170px;
   text-align: center;
 }
 #ign_tr {
   text-align: right;
+}
+/* Tier列 */
+#tier_th {
+  width: 20px;
+  text-align: center;
+}
+#tier_tr {
+  text-align: center;
 }
 
 h1 {
