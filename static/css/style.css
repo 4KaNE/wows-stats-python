@@ -90,12 +90,24 @@ table {
   background-color: #122B2E;
   border-collapse: collapse;
   font-size: 14px;
-  margin-left: 3px;
+  margin-left: 20px;
 }
 
 /* 味方/敵, 艦別戦績, 総合戦績 */
 #description_table{
-  margin-top: 3px;
+  margin-top: 8px;
+}
+/* チーム */
+#description_team {
+  width: 233px;
+}
+/* 艦別戦績 */
+#description_ship {
+  width: 846;
+}
+/* 全体戦績 */
+#description_all {
+  width: 223;
 }
 
 /* 罫線の設定 */
@@ -103,7 +115,8 @@ table th, table td {
   border: solid 1px white;
   color: white;
   /*実線 1px 黒*/
-  }
+}
+
 
 /* クラン列 */
 #clan_th {

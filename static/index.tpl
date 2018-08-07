@@ -32,7 +32,9 @@
   <div id="tab1" class="tab">
     <table id="description_table">
       <tr>
-        <td>味方</td>
+        <td id="description_team">味方</td>
+        <td id="description_ship">艦別戦績</td>
+        <td id="description_all">全体戦績</td>
       </tr>
     </table>
     <table>
@@ -87,7 +89,9 @@
     </table>
     <table id="description_table">
       <tr>
-        <td>敵</td>
+        <td id="description_team">敵</td>
+        <td id="description_ship">艦別戦績</td>
+        <td id="description_all">全体戦績</td>
       </tr>
     </table>
     <table>
