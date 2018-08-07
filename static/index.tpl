@@ -51,7 +51,7 @@
           <th id="shootdown_th">撃墜</th>
           <th id="exp_th">経験値</th>
           <th id="battlenumber_th">戦闘数</th>
-          <th>ランク</th>
+          <th id="rank_th">ランク</th>
           <th>勝率</th>
           <th>経験値</th>
           <th>戦闘数</th>
@@ -74,7 +74,7 @@
             document.write('<td id="shootdown_td">99.9</td>');
             document.write('<td id="exp_td">9,999</td>');
             document.write('<td id="battlenumber_td">99,999</td>');
-            document.write('<td>23→23</td>');
+            document.write('<td id="rank_td">23→23</td>');
             document.write('<td>100.0%</td>');
             document.write('<td>9,999</td>');
             document.write('<td>99,999</td>');
@@ -104,7 +104,7 @@
             <th id="shootdown_th">撃墜</th>
             <th id="exp_th">経験値</th>
             <th id="battlenumber_th">戦闘数</th>
-            <th>ランク</th>
+            <th id="rank_th">ランク</th>
             <th>勝率</th>
             <th>経験値</th>
             <th>戦闘数</th>
@@ -127,7 +127,7 @@
               document.write('<td id="shootdown_td">99.9</td>');
               document.write('<td id="exp_td">9,999</td>');
               document.write('<td id="battlenumber_td">99,999</td>');
-              document.write('<td>23→23</td>');
+              document.write('<td id="rank_td">23→23</td>');
               document.write('<td>100.0%</td>');
               document.write('<td>9,999</td>');
               document.write('<td>99,999</td>');
