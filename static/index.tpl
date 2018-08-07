@@ -47,8 +47,8 @@
           <th id="damage_th">ダメージ</th>
           <th id="kd_th">K/D</th>
           <th id="winrate_th">勝率</th>
-          <th>生存率</th>
-          <th>撃墜</th>
+          <th id="survive_th">生存率</th>
+          <th id="shootdown_th">撃墜</th>
           <th>経験値</th>
           <th>戦闘数</th>
           <th>ランク</th>
@@ -70,8 +70,8 @@
             document.write('<td id="damage_td">100,000</td>');
             document.write('<td id="kd_td">999.9</td>');
             document.write('<td id="winrate_td">100.0%</td>');
-            document.write('<td>100%|100%</td>');
-            document.write('<td>99.9</td>');
+            document.write('<td id="survive_td">100%|100%</td>');
+            document.write('<td id="shootdown_td">99.9</td>');
             document.write('<td>9,999</td>');
             document.write('<td>9,999</td>');
             document.write('<td>23→23</td>');
@@ -100,8 +100,8 @@
             <th id="damage_th">ダメージ</th>
             <th id="kd_th">K/D</th>
             <th id="winrate_th">勝率</th>
-            <th>生存率</th>
-            <th>撃墜</th>
+            <th id="survive_th">生存率</th>
+            <th id="shootdown_th">撃墜</th>
             <th>経験値</th>
             <th>戦闘数</th>
             <th>ランク</th>
@@ -123,8 +123,8 @@
               document.write('<td id="damage_td">100,000</td>');
               document.write('<td id="kd_td">999.9</td>');
               document.write('<td id="winrate_td">100.0%</td>');
-              document.write('<td>100%|100%</td>');
-              document.write('<td>99.9</td>');
+              document.write('<td id="survive_td">100%|100%</td>');
+              document.write('<td id="shootdown_td">99.9</td>');
               document.write('<td>9,999</td>');
               document.write('<td>9,999</td>');
               document.write('<td>23→23</td>');

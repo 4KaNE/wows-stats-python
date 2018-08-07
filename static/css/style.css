@@ -191,6 +191,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;  
 }
+/* 生存率列 */
+#survive_th {
+  width: 90px;
+  text-align: center;
+}
+#survive_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
 h1 {
   color: white;
