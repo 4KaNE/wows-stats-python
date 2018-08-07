@@ -123,10 +123,18 @@ table th, table td {
 }
 /* Tier列 */
 #tier_th {
-  width: 20px;
+  width: 15px;
   text-align: center;
 }
 #tier_tr {
+  text-align: right;
+}
+/* 艦種列 */
+#shipclass_th {
+  width: 50px;
+  text-align: center;
+}
+#shipclass_tr {
   text-align: center;
 }
 

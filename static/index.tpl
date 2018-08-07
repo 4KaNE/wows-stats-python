@@ -41,14 +41,14 @@
           <th id="clan_th">CLAN</th>
           <th id="ign_th">IGN</th>
           <th id="tier_th">T</th>
-          <th>艦種</th>
+          <th id="shipclass_th">艦種</th>
           <th>艦名</th>
           <th>戦闘力</th>
           <th>ダメージ</th>
           <th>K/D</th>
           <th>勝率</th>
           <th>生存率</th>
-          <th>撃墜率</th>
+          <th>撃墜</th>
           <th>経験値</th>
           <th>戦闘数</th>
           <th>ランク</th>
@@ -64,20 +64,20 @@
             document.write('<td id="clan_tr">CLANA</td>');
             document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
             document.write('<td id="tier_tr">10</td>');
-            document.write('<td>CV</td>');
+            document.write('<td id="shipclass_tr">CV</td>');
             document.write('<td>SHOUKAKU</td>');
-            document.write('<td>530,000</td>');
-            document.write('<td>60,000</td>');
-            document.write('<td>11.5</td>');
-            document.write('<td>64.5%</td>');
-            document.write('<td>90%|60%</td>');
-            document.write('<td>17.5</td>');
-            document.write('<td>1,500</td>');
-            document.write('<td>490</td>');
-            document.write('<td>23->7</td>');
-            document.write('<td>57.88%</td>');
-            document.write('<td>1,400</td>');
-            document.write('<td>5,300</td>');
+            document.write('<td>10,000,000</td>');
+            document.write('<td>100,000</td>');
+            document.write('<td>999.9</td>');
+            document.write('<td>100.0%</td>');
+            document.write('<td>100%|100%</td>');
+            document.write('<td>99.9</td>');
+            document.write('<td>9,999</td>');
+            document.write('<td>9,999</td>');
+            document.write('<td>23→23</td>');
+            document.write('<td>100.0%</td>');
+            document.write('<td>9,999</td>');
+            document.write('<td>99,999</td>');
             document.write('</tr>')
           }
         </script>
@@ -94,14 +94,14 @@
             <th id="clan_th">CLAN</th>
             <th id="ign_th">IGN</th>
             <th id="tier_th">T</th>
-            <th>艦種</th>
+            <th id="shipclass_th">艦種</th>
             <th>艦名</th>
             <th>戦闘力</th>
             <th>ダメージ</th>
             <th>K/D</th>
             <th>勝率</th>
             <th>生存率</th>
-            <th>撃墜率</th>
+            <th>撃墜</th>
             <th>経験値</th>
             <th>戦闘数</th>
             <th>ランク</th>
@@ -117,20 +117,20 @@
               document.write('<td id="clan_tr">CLANA</td>');
               document.write('<td id="ign_tr">ABCDEFGHIJKLMNOPQR</td>');
               document.write('<td id="tier_tr">10</td>');
-              document.write('<td>CV</td>');
+              document.write('<td id="shipclass_tr">CV</td>');
               document.write('<td>SHOUKAKU</td>');
-              document.write('<td>530,000</td>');
-              document.write('<td>60,000</td>');
-              document.write('<td>11.5</td>');
-              document.write('<td>64.5%</td>');
-              document.write('<td>90%|60%</td>');
-              document.write('<td>17.5</td>');
-              document.write('<td>1,500</td>');
-              document.write('<td>490</td>');
-              document.write('<td>23->7</td>');
-              document.write('<td>57.88%</td>');
-              document.write('<td>1,400</td>');
-              document.write('<td>5,300</td>');
+              document.write('<td>10,000,000</td>');
+              document.write('<td>100,000</td>');
+              document.write('<td>999.9</td>');
+              document.write('<td>100.0%</td>');
+              document.write('<td>100%|100%</td>');
+              document.write('<td>99.9</td>');
+              document.write('<td>9,999</td>');
+              document.write('<td>9,999</td>');
+              document.write('<td>23→23</td>');
+              document.write('<td>100.0%</td>');
+              document.write('<td>9,999</td>');
+              document.write('<td>99,999</td>');
               document.write('</tr>')
             }
           </script>
