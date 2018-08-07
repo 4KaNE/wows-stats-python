@@ -60,7 +60,7 @@
       <tbody>
         <tr>
           <td id="clan_tr">SWANA</td>
-          <td>AAAAAAAAAAAAAAAAAA</td>
+          <td id="ign_tr">AAAAAAAAAAAAAAAAAA</td>
           <td>8</td>
           <td>CV</td>
           <td>SHOUKAKU</td>

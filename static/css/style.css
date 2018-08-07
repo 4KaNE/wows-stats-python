@@ -84,7 +84,8 @@ div.tab p {
 	list-style-type: none;
   width: 50%;}
 
-/* ▼ 表の書式設定 */
+
+/* 戦績テーブルのレイアウト */
 table {
   background-color: #122B2E;
   border-collapse: collapse;
@@ -92,23 +93,33 @@ table {
   margin-left: 3px;
 }
 
+/* 味方/敵, 艦別戦績, 総合戦績 */
 #description_table{
   margin-top: 3px;
 }
 
+/* 罫線の設定 */
 table th, table td {
   border: solid 1px white;
   color: white;
   /*実線 1px 黒*/
   }
 
+/* クラン列 */
 #clan_th {
   width: 55px;
   text-align: center;
 }
-
 #clan_tr {
   text-align: center;
+}
+/* ING列 */
+#ign_th {
+  width: 170px;
+  text-align: center;
+}
+#ign_tr {
+  text-align: right;
 }
 
 h1 {
