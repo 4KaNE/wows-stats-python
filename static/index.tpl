@@ -44,6 +44,7 @@
           <th id="shipclass_th">艦種</th>
           <th id="shipname_th">艦名</th>
           <th id="combatpower_th">戦闘力</th>
+          <th id="combatpower_th">戦闘力2</th>
           <th id="damage_th">ダメージ</th>
           <th id="kd_th">K/D</th>
           <th id="winrate_th">勝率</th>
@@ -52,9 +53,9 @@
           <th id="exp_th">経験値</th>
           <th id="battlenumber_th">戦闘数</th>
           <th id="rank_th">ランク</th>
-          <th>勝率</th>
-          <th>経験値</th>
-          <th>戦闘数</th>
+          <th id="winrate_th">勝率</th>
+          <th id="exp_th">経験値</th>
+          <th id="battlenumber_th">戦闘数</th>
         </tr>
       </thead>
       <tbody>
@@ -67,6 +68,7 @@
             document.write('<td id="shipclass_td">CV</td>');
             document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
             document.write('<td id="combatpower_td">10,000,000</td>');
+            document.write('<td id="combatpower_td">10,000,000</td>');
             document.write('<td id="damage_td">100,000</td>');
             document.write('<td id="kd_td">999.9</td>');
             document.write('<td id="winrate_td">100.0%</td>');
@@ -75,9 +77,9 @@
             document.write('<td id="exp_td">9,999</td>');
             document.write('<td id="battlenumber_td">99,999</td>');
             document.write('<td id="rank_td">23→23</td>');
-            document.write('<td>100.0%</td>');
-            document.write('<td>9,999</td>');
-            document.write('<td>99,999</td>');
+            document.write('<td id="winrate_td">100.0%</td>');
+            document.write('<td id="exp_td">9,999</td>');
+            document.write('<td id="battlenumber_td">99,999</td>');
             document.write('</tr>')
           }
         </script>
@@ -97,6 +99,7 @@
             <th id="shipclass_th">艦種</th>
             <th id="shipname_th">艦名</th>
             <th id="combatpower_th">戦闘力</th>
+            <th id="combatpower_th">戦闘力2</th>
             <th id="damage_th">ダメージ</th>
             <th id="kd_th">K/D</th>
             <th id="winrate_th">勝率</th>
@@ -105,9 +108,9 @@
             <th id="exp_th">経験値</th>
             <th id="battlenumber_th">戦闘数</th>
             <th id="rank_th">ランク</th>
-            <th>勝率</th>
-            <th>経験値</th>
-            <th>戦闘数</th>
+            <th id="winrate_th">勝率</th>
+            <th id="exp_th">経験値</th>
+            <th id="battlenumber_th">戦闘数</th>
           </tr>
         </thead>
         <tbody>
@@ -120,6 +123,7 @@
               document.write('<td id="shipclass_td">CV</td>');
               document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
               document.write('<td id="combatpower_td">10,000,000</td>');
+              document.write('<td id="combatpower_td">10,000,000</td>');
               document.write('<td id="damage_td">100,000</td>');
               document.write('<td id="kd_td">999.9</td>');
               document.write('<td id="winrate_td">100.0%</td>');
@@ -128,9 +132,9 @@
               document.write('<td id="exp_td">9,999</td>');
               document.write('<td id="battlenumber_td">99,999</td>');
               document.write('<td id="rank_td">23→23</td>');
-              document.write('<td>100.0%</td>');
-              document.write('<td>9,999</td>');
-              document.write('<td>99,999</td>');
+              document.write('<td id="winrate_td">100.0%</td>');
+              document.write('<td id="exp_td">9,999</td>');
+              document.write('<td id="battlenumber_td">99,999</td>');
               document.write('</tr>')
             }
           </script>
