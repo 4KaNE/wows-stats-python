@@ -161,6 +161,16 @@ table th, table td {
   padding-left: 3px;
   padding-right: 3px;
 }
+/* ダメージ列 */
+#damage_th {
+  width: 60px;
+  text-align: center;
+}
+#damage_td {
+  text-align: right;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 
 h1 {
   color: white;
