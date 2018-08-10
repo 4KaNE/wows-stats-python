@@ -20,10 +20,17 @@ def execute(cmd: str, print_cmd=False) -> None:
     print("-" * 30)
 
 if __name__ == '__main__':
-    print("setting start")
+    print("setting.py")
+    print("-" * 30)
+    print("install required package.")
     print("-" * 30)
     execute("pip install bottle", True)
     execute("pip install gevent", True)
     execute("pip install gevent-websocket", True)
+    print("pip install was completed.")
+    print("-" * 30)
+    print("Start initial setting.")
+    #入力ページにとばしたほうが良いかも
+    
     sleep(3600)
     
