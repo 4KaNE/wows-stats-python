@@ -5,26 +5,37 @@ from bottle import route, run, post, template, request
 
 web.open('http://localhost:8080/setting')
 
-def check_wows_path(path :str) -> bool:
+
+def check(path: str, app_id: str, ign: str, region: str):
     """
-    Check if the entered path is correct.
-    
+    Check if the entered value is correct.
+
     Parameters
     ----------
     path : str
-        Path of directory where WorldOfWarships.exe is located
-    
+        Path of directory where WorldOfWarships.exe is located.
+    app_id : str
+    ign : str
+    region : str    
+
     Returns
     ----------
     result : bool
-        True if path is correct, False otherwise.
+    error_list : list
     """
     result = False
+    error_list = []
+
     exe_path = path + "/WorldOfWarships.exe"
-    if isfile(exe_path):
+    if not isfile(exe_path):
+        error_list.append("入力されたWoWsディレクトリのパスが不正です。")
+
+
+    if len(error_list) == 0:
         result = True
 
-    return result
+    return result, error_list
+
 
 
 @route('/setting')
@@ -45,9 +56,6 @@ def do_setting():
     print(ign)
 
     success = False
-    error_list = []
-    if not check_wows_path(wows_path):
-        error_list.append("入力されたWoWsディレクトリのパスが不正です。")
 
     error = "存在しないアプリケーションキーです"
     error_message = "ERROR!: {}".format(error)
