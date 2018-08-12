@@ -35,6 +35,5 @@ if __name__ == '__main__':
 
     #入力ページにとばしたほうが良いかも
     web.open('http://localhost:8080/setting')
-    
-    sleep(3600)
+    execute("python bottler.py")
     
