@@ -1,8 +1,6 @@
 """setting.py"""
 import subprocess
 from time import sleep
-import webbrowser as web
-
 
 def execute(cmd: str, print_cmd=False) -> None:
     """
@@ -32,8 +30,5 @@ if __name__ == '__main__':
     execute("pip install mypy", True)
     print("pip install was completed.")
     print("-" * 30)
-
-    #入力ページにとばしたほうが良いかも
-    web.open('http://localhost:8080/setting')
     execute("python bottler.py")
     
