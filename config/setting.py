@@ -28,6 +28,7 @@ if __name__ == '__main__':
     execute("pip install gevent", True)
     execute("pip install gevent-websocket", True)
     execute("pip install mypy", True)
+    execute("pip install requests", True)
     print("pip install was completed.")
     print("-" * 30)
     execute("python bottler.py")

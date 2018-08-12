@@ -94,7 +94,7 @@
       </tr>
       <tr>
         <td class="title">IGN:</td>
-        <td><input class="input" name="ign" type="text" placeholder="Akane_Kotonoha" /></td>
+        <td><input class="input" name="ign" type="text" placeholder="wows_in_game_name_2018" /></td>
       </tr>
       <tr>
         <td colspan="2">プレイしているサーバーを選択</td>

@@ -1,7 +1,10 @@
 """open setting.html"""
 from os.path import isdir, isfile
+import json
 import webbrowser as web
 from bottle import route, run, post, template, request
+import requests
+
 
 web.open('http://localhost:8080/setting')
 
@@ -25,16 +28,42 @@ def check(path: str, app_id: str, ign: str, region: str):
     """
     result = False
     error_list = []
+    account_id = None
 
     exe_path = path + "/WorldOfWarships.exe"
     if not isfile(exe_path):
         error_list.append("入力されたWoWsディレクトリのパスが不正です。")
 
+    api = "https://api.worldofwarships.{region}/wows/account/list/\
+            ?application_id={application_id}&search={search}"
+    url = api.format(region=region, application_id=app_id, search=ign)
+    result = requests.get(url)
+    data = json.loads(result.text)
+    if data["status"] == "error":
+        if data["error"]["message"] == "INVALID_APPLICATION_ID":
+            error_list.append("入力されたアプリケーションIDは無効です")
+        elif data["error"]["message"] == "INVALID_SEARCH":
+            error_list.append("入力されたIGNは無効です")
+    
+    elif data["status"] == "ok":
+        if data["meta"]["count"] == 0:
+            error_list.append("存在しないIGNです")
+        elif data["meta"]["count"] == 1:
+            account_id = data["data"][0]["account_id"]
+        else:
+            if data["data"][0]["nickname"] == ign:
+                account_id = data["data"][0]["account_id"]
+            else:
+                error_list.append("複数のIGNがヒットしました。IGNはフルで入力してください")
 
     if len(error_list) == 0:
         result = True
+        print("AAAA")
+    else:
+        result = False
+    print(error_list)
 
-    return result, error_list
+    return result, error_list, account_id
 
 
 
@@ -45,22 +74,28 @@ def setting():
 @post('/setting')
 def do_setting():
     wows_path = request.forms.wowsPath
-
     app_id = request.forms.appId
     region = request.forms.region
     ign = request.forms.ign
+    no_value = template('setting.tpl', errorMessage="全ての欄に入力してください")
+    if wows_path == "":
+        return no_value
+    elif app_id == "":
+        return no_value
+    elif ign == "":
+        return no_value
+
     wows_path = wows_path.replace("\\", "/")
-    print(wows_path)
-    print(app_id)
-    print(region)
-    print(ign)
+    result, error_list, account_id = check(wows_path, app_id, ign, region)
+    print(result)
 
-    success = False
+    print(account_id)
 
-    error = "存在しないアプリケーションキーです"
-    error_message = "ERROR!: {}".format(error)
+    error_message = ""
+    for error in error_list:
+        error_message += "ERROR!: {}\n".format(error)
 
-    if success:
+    if result:
         return """
             <html>
             <head>
