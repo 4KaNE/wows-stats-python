@@ -1,6 +1,8 @@
 """setting.py"""
 import subprocess
 from time import sleep
+import webbrowser as web
+
 
 def execute(cmd: str, print_cmd=False) -> None:
     """
@@ -20,10 +22,19 @@ def execute(cmd: str, print_cmd=False) -> None:
     print("-" * 30)
 
 if __name__ == '__main__':
-    print("setting start")
+    print("Start initial setting.")
+    print("-" * 30)
+    print("install required package.")
     print("-" * 30)
     execute("pip install bottle", True)
     execute("pip install gevent", True)
     execute("pip install gevent-websocket", True)
+    execute("pip install mypy", True)
+    print("pip install was completed.")
+    print("-" * 30)
+
+    #入力ページにとばしたほうが良いかも
+    web.open('http://localhost:8080/setting')
+    
     sleep(3600)
     
