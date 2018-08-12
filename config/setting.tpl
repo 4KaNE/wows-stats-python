@@ -9,6 +9,9 @@
     h3 {
         color: #EEA34A
     }
+    #errorMessage{
+        color: #ff0000;
+    }
     #table {
         margin: 0 auto;
     }
@@ -66,8 +69,8 @@
 
 </head>
 <body>
-    <h3>設定</h3>
-  <p>{{statusMessage}}</p>
+  <h3>設定</h3>
+  <p id="errorMessage">{{errorMessage}}</p>
   <form action="/setting" method="post">
     <div id="table">
     <table align="center">
@@ -81,7 +84,6 @@
       <tr>
         <td colspan="2"><a href="https://developers.wargaming.net/applications/">Developers Room</a>
             で作成したアプリケーションIDを入力</td>
-
       </tr>
       <tr>
         <td class="title">APP Key:</td>
@@ -101,9 +103,9 @@
         <td class="title">Region:</td>
         <td><select name="region">
           <option value="asia">ASIA</option>
-          <option value="asia">NA</option>
-          <option value="asia">EU</option>
-          <option value="asia">RU</option>
+          <option value="na">NA</option>
+          <option value="eu">EU</option>
+          <option value="ru">RU</option>
         </select></td>
       </tr>
 

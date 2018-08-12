@@ -6,7 +6,7 @@ web.open('http://localhost:8080/setting')
     
 @route('/setting')
 def setting():
-    return template('setting.tpl', statusMessage="")
+    return template('setting.tpl', errorMessage="")
 
 @post('/setting')
 def do_setting():
@@ -19,7 +19,35 @@ def do_setting():
     print(region)
     print(ign)
 
-    return template('setting.tpl', statusMessage="success!")
+    success = False
+    error = "存在しないアプリケーションキーです"
+    error_message = "ERROR!: {}".format(error)
+
+    if success:
+        return """
+            <html>
+            <head>
+              <style type='text/css'>
+                body {
+                  background-color: #36393f;
+                  color: #DCDDDE;
+                  text-align: center;
+                }
+                h3 {
+                    color: #EEA34A
+                }
+              </style>
+            
+            </head>
+            <body>
+              <h3>成功</h3>
+              登録完了しました!<br>
+              run.batで起動することができます。<br>
+            </body>
+            </html>"""
+
+    else:
+        return template('setting.tpl', errorMessage=error_message)
 
 
 run(host='localhost', port=8080, debug=True)
