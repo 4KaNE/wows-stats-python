@@ -31,5 +31,5 @@ if __name__ == '__main__':
     execute("pip install requests", True)
     print("pip install was completed.")
     print("-" * 30)
-    execute("python bottler.py")
+    execute("python setting.py")
     
