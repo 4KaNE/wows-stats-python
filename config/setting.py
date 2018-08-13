@@ -2,7 +2,7 @@
 from os.path import isdir, isfile
 import json
 import webbrowser as web
-from bottle import route, run, post, template, request
+from bottle import route, run, post, template, request, get
 import requests
 
 
@@ -18,8 +18,11 @@ def check(path: str, app_id: str, ign: str, region: str):
     path : str
         Path of directory where WorldOfWarships.exe is located.
     app_id : str
+        Application key for accessing wows API
     ign : str
-    region : str    
+        Name in your game
+    region : str
+        The server region you are playing
 
     Returns
     ----------
@@ -65,6 +68,29 @@ def check(path: str, app_id: str, ign: str, region: str):
 
     return result, error_list, account_id
 
+def save_config(path: str, app_id: str, account_id: str, region: str):
+    """
+    Save config in ini file.
+    
+    Parameters
+    ----------
+    path : str
+        Path of directory where WorldOfWarships.exe is located.
+    app_id : str
+        Application key for accessing wows API
+    account_id : str
+        Your account id on wows
+    region : str
+        The server region you are playing
+    """
+    config = """[config]
+wows_path : {}
+application_id : {}
+account_id : {}
+region : {}""".format(path, app_id, account_id, region)
+    print(config)
+    with open('config.ini', 'w', encoding="utf-8") as ini_file:
+        ini_file.write(config)
 
 
 @route('/setting')
@@ -87,15 +113,9 @@ def do_setting():
 
     wows_path = wows_path.replace("\\", "/")
     result, error_list, account_id = check(wows_path, app_id, ign, region)
-    print(result)
-
-    print(account_id)
-
-    error_message = ""
-    for error in error_list:
-        error_message += "ERROR!: {}\n".format(error)
 
     if result:
+        save_config(wows_path, app_id, account_id, region)
         return """
             <html>
             <head>
@@ -117,6 +137,10 @@ def do_setting():
               run.batで起動することができます。<br>
             </body>
             </html>"""
+    
+    error_message = ""
+    for error in error_list:
+        error_message += "ERROR!: {}\n".format(error)
 
     else:
         return template('setting.tpl', errorMessage=error_message)
