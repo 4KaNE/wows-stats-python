@@ -61,10 +61,8 @@ def check(path: str, app_id: str, ign: str, region: str):
 
     if len(error_list) == 0:
         result = True
-        print("AAAA")
     else:
         result = False
-    print(error_list)
 
     return result, error_list, account_id
 
@@ -104,11 +102,7 @@ def do_setting():
     region = request.forms.region
     ign = request.forms.ign
     no_value = template('setting.tpl', errorMessage="全ての欄に入力してください")
-    if wows_path == "":
-        return no_value
-    elif app_id == "":
-        return no_value
-    elif ign == "":
+    if wows_path == "" or app_id == "" or ign == "":
         return no_value
 
     wows_path = wows_path.replace("\\", "/")

@@ -87,7 +87,7 @@
       </tr>
       <tr>
         <td class="title">APP Key:</td>
-        <td><input class="input" name="appId" type="text" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/></td>
+        <td><input class="input" name="appId" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/></td>
       </tr>
       <tr>
         <td colspan="2">ゲーム内の名前</td>

@@ -27,6 +27,8 @@ if __name__ == '__main__':
     execute("pip install bottle", True)
     execute("pip install gevent", True)
     execute("pip install gevent-websocket", True)
+    execute("pip install bottle-websocket", True)
+    execute("pip install karellen-geventws", True)
     execute("pip install mypy", True)
     execute("pip install requests", True)
     print("pip install was completed.")
