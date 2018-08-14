@@ -172,8 +172,8 @@
     <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Please send request and bug report to 
-        <a href="https://github.com/4KaNE/wows-stats-python">GitHub</a>
-        or <a href="https://twitter.com/4KaNE_NiER">Twitter</a>.</p>
+        <a href="https://github.com/4KaNE/wows-stats-python" target="_blank">GitHub</a>
+        or <a href="https://twitter.com/4KaNE_NiER" target="_blank">Twitter</a>.</p>
 </footer>
 
 </html>

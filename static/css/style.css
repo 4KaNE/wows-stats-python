@@ -16,7 +16,11 @@ div.tabbox {
   height:200px;
 }
 /* ▼ タブ部分のマージンとパディング領域を設定 */
-p.tabs { margin: 0px; padding: 0px; float: right;}
+p.tabs { 
+  margin: 0px; 
+  padding: 0px; 
+  float: right;
+}
 p.tabs a {
    /* ▼ リンクをタブのように見せる */
    display: block; width: 100px; float: left;
