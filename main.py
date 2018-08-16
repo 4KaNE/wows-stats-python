@@ -1,10 +1,10 @@
 """test"""
 import os
-from bottle import route, run, template, static_file
+from bottle import route, run, static_file
+from bottle import TEMPLATE_PATH, jinja2_template as template
 
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 @route('/')
 def hoge():
