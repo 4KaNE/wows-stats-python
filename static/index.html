@@ -116,30 +116,28 @@
           </tr>
         </thead>
         <tbody>
-          <script type="text/javascript">
-            for (var i = 1; i <= 12; i++){
-              document.write('<tr>')
-              document.write('<td id="clan_td">CLANA</td>');
-              document.write('<td id="ign_td">ABCDEFGHIJKLMNOPQR</td>');
-              document.write('<td id="tier_td">10</td>');
-              document.write('<td id="shipclass_td">CV</td>');
-              document.write('<td id="shipname_td">Oktyabrskaya Revolutsiya</td>');
-              document.write('<td id="combatpower_td">10,000,000</td>');
-              document.write('<td id="combatpower_td">10,000,000</td>');
-              document.write('<td id="damage_td">100,000</td>');
-              document.write('<td id="kd_td">999.9</td>');
-              document.write('<td id="winrate_td">100.0%</td>');
-              document.write('<td id="survive_td">100%|100%</td>');
-              document.write('<td id="shootdown_td">99.9</td>');
-              document.write('<td id="exp_td">9,999</td>');
-              document.write('<td id="battlenumber_td">99,999</td>');
-              document.write('<td id="rank_td">23→23</td>');
-              document.write('<td id="winrate_td">100.0%</td>');
-              document.write('<td id="exp_td">9,999</td>');
-              document.write('<td id="battlenumber_td">99,999</td>');
-              document.write('</tr>')
-            }
-          </script>
+          {% for player in enemies %}
+            <tr>
+              <td id="clan_td">{{ player.clan }}</td>
+              <td id="ign_td">{{ player.ign }}</td>
+              <td id="tier_td">{{ player.tier }}</td>
+              <td id="shipclass_td">{{ player.ship_class }}</td>
+              <td id="shipname_td">{{ player.ship_name }}</td>
+              <td id="combatpower_td">{{ player.combat_power_1 }}</td>
+              <td id="combatpower_td">{{ player.combat_power_2 }}</td>
+              <td id="damage_td">{{ player.damage }}</td>
+              <td id="kd_td">{{ player.kill_death }}</td>
+              <td id="winrate_td">{{ player.ship_wr }}%</td>
+              <td id="survive_td">{{ player.winning_survive }}%|{{ player.losing_survive }}%</td>
+              <td id="shootdown_td">{{ player.shot_down }}</td>
+              <td id="exp_td">{{ player.ship_exp }}</td>
+              <td id="battlenumber_td">{{ player.ship_battle_number }}</td>
+              <td id="rank_td">{{ player.before_rank }}→{{ player.now_rank }}</td>
+              <td id="winrate_td">{{ player.overall_wr }}%</td>
+              <td id="exp_td">{{ player.overall_exp }}</td>
+              <td id="battlenumber_td">{{ player.overall_battle_number }}</td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
   </div>

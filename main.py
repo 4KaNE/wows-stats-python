@@ -18,8 +18,9 @@ def hoge():
         data = load(json_file)
     
     friends = data["friends"]
+    enemies = data["enemies"]
 
-    return template('static/index', data=data, friends=friends)
+    return template('static/index', data=data, friends=friends, enemies=enemies)
 
 @route('/static/<file_path:path>')
 def static(file_path):
