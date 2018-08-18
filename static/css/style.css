@@ -114,11 +114,11 @@ table {
 }
 /* 艦別戦績 */
 #description_ship {
-  width: 846;
+  width: 853px;
 }
 /* 全体戦績 */
 #description_all {
-  width: 223;
+  width: 224px;
 }
 
 /* 罫線の設定 */
@@ -143,7 +143,7 @@ table th, table td {
   text-align: center;
 }
 #ign_td {
-  text-align: right;
+  text-align: left;
   padding-left: 3px;
   padding-right: 3px;
 }
@@ -153,7 +153,7 @@ table th, table td {
   text-align: center;
 }
 #tier_td {
-  text-align: right;
+  text-align: center;
   padding-left: 3px;
   padding-right: 3px;
 }
@@ -171,13 +171,13 @@ table th, table td {
   text-align: center;
 }
 #shipname_td {
-  text-align: right;
+  text-align: left;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 戦闘力列 */
 #combatpower_th {
-  width: 80px;
+  width: 85px;
   text-align: center;
 }
 #combatpower_td {
@@ -187,7 +187,7 @@ table th, table td {
 }
 /* ダメージ列 */
 #damage_th {
-  width: 60px;
+  width: 63px;
   text-align: center;
 }
 #damage_td {
@@ -197,7 +197,7 @@ table th, table td {
 }
 /* K/D列 */
 #kd_th {
-  width: 45px;
+  width: 47px;
   text-align: center;
 }
 #kd_td {
@@ -207,7 +207,7 @@ table th, table td {
 }
 /* 勝率列 */
 #winrate_th {
-  width: 55px;
+  width: 60px;
   text-align: center;
 }
 #winrate_td {
@@ -217,11 +217,11 @@ table th, table td {
 }
 /* 生存率列 */
 #survive_th {
-  width: 90px;
+  width: 93px;
   text-align: center;
 }
 #survive_td {
-  text-align: right;
+  text-align: center;
   padding-left: 3px;
   padding-right: 3px;
 }
