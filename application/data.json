@@ -1,7 +1,7 @@
 ﻿{
     "battle_flag": "1",
-    "enemies": {
-        "1": {
+    "enemies": [
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -25,7 +25,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "10": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -49,7 +49,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "11": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -73,7 +73,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "12": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -97,7 +97,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "2": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -121,7 +121,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "3": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -145,7 +145,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "4": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -169,7 +169,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "5": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -193,7 +193,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "6": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -217,7 +217,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "7": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -241,7 +241,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "8": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -265,7 +265,7 @@
             "tier": 8,
             "winning_survive": 95
         },
-        "9": {
+        {
             "before_rank": 23,
             "clan": "SWAN",
             "combat_power_1": 500000,
@@ -289,7 +289,7 @@
             "tier": 8,
             "winning_survive": 95
         }
-    },
+    ],
     "friends": [
         {
             "before_rank": 23,
