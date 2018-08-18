@@ -16,8 +16,10 @@ def hoge():
     json_path = "{}/application/data.json".format(BASE_DIR)
     with open(json_path, 'r', encoding="utf-8_sig") as json_file:
         data = load(json_file)
+    
+    friends = data["friends"]
 
-    return template('static/index', data=data)
+    return template('static/index', data=data, friends=friends)
 
 @route('/static/<file_path:path>')
 def static(file_path):
