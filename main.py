@@ -5,6 +5,7 @@ from json.decoder import JSONDecodeError
 from bottle import route, run, static_file
 from bottle import TEMPLATE_PATH, jinja2_template as template
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
@@ -17,10 +18,9 @@ def hoge():
     with open(json_path, 'r', encoding="utf-8_sig") as json_file:
         data = load(json_file)
     
-    friends = data["friends"]
-    enemies = data["enemies"]
+    flag = 0
 
-    return template('static/index', data=data, friends=friends, enemies=enemies)
+    return template('static/index', data=data, flag=flag)
 
 @route('/static/<file_path:path>')
 def static(file_path):

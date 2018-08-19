@@ -12,12 +12,14 @@
   </script>
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
+
+  <title>{{data.title}}</title>
   
 </head>
 <body>
 
 <div>
-  <p>{{data.title}}</p>
+  <p>{{data.map_name}}</p>
 </div>
 
 <div class="tabbox">
@@ -30,6 +32,7 @@
   </p>
   <!-- 戦闘タブ -->
   <div id="tab1" class="tab">
+    {% if flag == 1 %}
     <table id="description_table">
       <tr>
         <td id="description_team">味方</td>
@@ -61,7 +64,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for player in friends %}
+        {% for player in data.friends %}
           <tr>
             <td id="clan_td">{{ player.clan }}</td>
             <td id="ign_td">{{ player.ign }}</td>
@@ -116,7 +119,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for player in enemies %}
+          {% for player in data.enemies %}
             <tr>
               <td id="clan_td">{{ player.clan }}</td>
               <td id="ign_td">{{ player.ign }}</td>
@@ -140,6 +143,7 @@
           {% endfor %}
         </tbody>
       </table>
+      {% endif %}
   </div>
 
   <div id="tab2" class="tab">
