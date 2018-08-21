@@ -18,7 +18,7 @@ def hoge():
     with open(json_path, 'r', encoding="utf-8_sig") as json_file:
         data = load(json_file)
     
-    flag = 0
+    flag = 1
 
     return template('static/index', data=data, flag=flag)
 
