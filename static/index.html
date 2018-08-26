@@ -1,5 +1,6 @@
 <html>
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
   <script type="text/javascript">
     function ChangeTab(tabname) {
     document.getElementById('tab1').style.display = 'none';
@@ -13,14 +14,17 @@
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
 
-  <title>{{data.title}}</title>
+  <title>wows-stats-python</title>
   
 </head>
 <body>
+<section id="app">
 
 <div>
-  <p>{{data.map_name}}</p>
+  <p>{{wsdata.map_name}}</p>
 </div>
+</section>
+<section id="app">
 
 <div class="tabbox">
 
@@ -32,7 +36,6 @@
   </p>
   <!-- 戦闘タブ -->
   <div id="tab1" class="tab">
-    {% if flag == 1 %}
     <table id="description_table">
       <tr>
         <td id="description_team">味方</td>
@@ -64,7 +67,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for player in data.friends %}
+        <div v-for="player in wsdata.friends">
           <tr>
             <td id="clan_td">{{ player.clan }}</td>
             <td id="ign_td">{{ player.ign }}</td>
@@ -85,7 +88,7 @@
             <td id="exp_td">{{ player.overall_exp }}</td>
             <td id="battlenumber_td">{{ player.overall_battle_number }}</td>
           </tr>
-        {% endfor %}
+        </div>
       </tbody>
     </table>
     <table id="description_table">
@@ -96,54 +99,53 @@
       </tr>
     </table>
     <table>
-        <thead>
+      <thead>
+        <tr>
+          <th id="clan_th">CLAN</th>
+          <th id="ign_th">IGN</th>
+          <th id="tier_th">T</th>
+          <th id="shipclass_th">艦種</th>
+          <th id="shipname_th">艦名</th>
+          <th id="combatpower_th">戦闘力</th>
+          <th id="combatpower_th">戦闘力2</th>
+          <th id="damage_th">ダメージ</th>
+          <th id="kd_th">K/D</th>
+          <th id="winrate_th">勝率</th>
+          <th id="survive_th">生存率</th>
+          <th id="shootdown_th">撃墜</th>
+          <th id="exp_th">経験値</th>
+          <th id="battlenumber_th">戦闘数</th>
+          <th id="rank_th">ランク</th>
+          <th id="winrate_th">勝率</th>
+          <th id="exp_th">経験値</th>
+          <th id="battlenumber_th">戦闘数</th>
+        </tr>
+      </thead>
+      <tbody>
+          <div v-for="player in wsdata.enemies">
           <tr>
-            <th id="clan_th">CLAN</th>
-            <th id="ign_th">IGN</th>
-            <th id="tier_th">T</th>
-            <th id="shipclass_th">艦種</th>
-            <th id="shipname_th">艦名</th>
-            <th id="combatpower_th">戦闘力</th>
-            <th id="combatpower_th">戦闘力2</th>
-            <th id="damage_th">ダメージ</th>
-            <th id="kd_th">K/D</th>
-            <th id="winrate_th">勝率</th>
-            <th id="survive_th">生存率</th>
-            <th id="shootdown_th">撃墜</th>
-            <th id="exp_th">経験値</th>
-            <th id="battlenumber_th">戦闘数</th>
-            <th id="rank_th">ランク</th>
-            <th id="winrate_th">勝率</th>
-            <th id="exp_th">経験値</th>
-            <th id="battlenumber_th">戦闘数</th>
+            <td id="clan_td">{{ player.clan }}</td>
+            <td id="ign_td">{{ player.ign }}</td>
+            <td id="tier_td">{{ player.tier }}</td>
+            <td id="shipclass_td">{{ player.ship_class }}</td>
+            <td id="shipname_td">{{ player.ship_name }}</td>
+            <td id="combatpower_td">{{ player.combat_power_1 }}</td>
+            <td id="combatpower_td">{{ player.combat_power_2 }}</td>
+            <td id="damage_td">{{ player.damage }}</td>
+            <td id="kd_td">{{ player.kill_death }}</td>
+            <td id="winrate_td">{{ player.ship_wr }}%</td>
+            <td id="survive_td">{{ player.winning_survive }}%|{{ player.losing_survive }}%</td>
+            <td id="shootdown_td">{{ player.shot_down }}</td>
+            <td id="exp_td">{{ player.ship_exp }}</td>
+            <td id="battlenumber_td">{{ player.ship_battle_number }}</td>
+            <td id="rank_td">{{ player.before_rank }}→{{ player.now_rank }}</td>
+            <td id="winrate_td">{{ player.overall_wr }}%</td>
+            <td id="exp_td">{{ player.overall_exp }}</td>
+            <td id="battlenumber_td">{{ player.overall_battle_number }}</td>
           </tr>
-        </thead>
-        <tbody>
-          {% for player in data.enemies %}
-            <tr>
-              <td id="clan_td">{{ player.clan }}</td>
-              <td id="ign_td">{{ player.ign }}</td>
-              <td id="tier_td">{{ player.tier }}</td>
-              <td id="shipclass_td">{{ player.ship_class }}</td>
-              <td id="shipname_td">{{ player.ship_name }}</td>
-              <td id="combatpower_td">{{ player.combat_power_1 }}</td>
-              <td id="combatpower_td">{{ player.combat_power_2 }}</td>
-              <td id="damage_td">{{ player.damage }}</td>
-              <td id="kd_td">{{ player.kill_death }}</td>
-              <td id="winrate_td">{{ player.ship_wr }}%</td>
-              <td id="survive_td">{{ player.winning_survive }}%|{{ player.losing_survive }}%</td>
-              <td id="shootdown_td">{{ player.shot_down }}</td>
-              <td id="exp_td">{{ player.ship_exp }}</td>
-              <td id="battlenumber_td">{{ player.ship_battle_number }}</td>
-              <td id="rank_td">{{ player.before_rank }}→{{ player.now_rank }}</td>
-              <td id="winrate_td">{{ player.overall_wr }}%</td>
-              <td id="exp_td">{{ player.overall_exp }}</td>
-              <td id="battlenumber_td">{{ player.overall_battle_number }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% endif %}
+        </div>>
+      </tbody>
+    <table>
   </div>
 
   <div id="tab2" class="tab">
@@ -159,21 +161,35 @@
     <h1>設定</h1>
   </div>
 
-
 </div>
 
 <script type="text/javascript">
   ChangeTab('tab1');
 </script>
+</section>
 
-</body>
-
-<footer>
+  <footer>
     <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Please send request and bug report to 
         <a href="https://github.com/4KaNE/wows-stats-python" target="_blank">GitHub</a>
         or <a href="https://twitter.com/4KaNE_NiER" target="_blank">Twitter</a>.</p>
-</footer>
+  </footer>
+  <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          wsdata: {},
+          ws: new WebSocket("ws://localhost:8080/websocket")
+        },
+        mounted: function () {
+          this.ws.onmessage = (evt) => {
+            this.wsdata = JSON.parse(evt.data)
+          }
+        }
+      })
+    </script>
+</body>
+
 
 </html>
