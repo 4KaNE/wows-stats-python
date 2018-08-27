@@ -1,4 +1,4 @@
-"""test"""
+"""Server"""
 import os
 from datetime import datetime
 from time import sleep
@@ -15,24 +15,12 @@ from geventwebsocket.handler import WebSocketHandler
 APP = Bottle()
 SERVER = WSGIServer(("0.0.0.0", 8080), APP, handler_class=WebSocketHandler)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-#STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-"""
-@route('/')
-def hoge():
-    json_path = "{}/application/data.json".format(BASE_DIR)
-    with open(json_path, 'r', encoding="utf-8_sig") as json_file:
-        data = load(json_file)
-    
-    flag = 1
-
-    return template('static/index', data=data, flag=flag)
-"""
-
-@route('/static/<file_path:path>')
+@APP.route('/static/<file_path:path>')
 def static(file_path):
-    """css"""
-    print("AAAAAAAA")
+    """
+    Returning static file when accessing localhost:8080/static/
+    """
     return static_file(file_path, root='{}/static'.format(BASE_DIR))
 
 @APP.route('/websocket')
@@ -71,5 +59,3 @@ def top():
     return static_file('static/index.html', root='./')
 
 SERVER.serve_forever()
-
-#run(host='localhost', port=8080,  reloader=True, debug=True)
