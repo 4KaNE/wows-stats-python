@@ -8,6 +8,7 @@ import requests
 
 web.open('http://localhost:8080/setting')
 
+
 def check(path: str, app_id: str, ign: str, region: str):
     """
     Check if the entered value is correct.
@@ -46,7 +47,7 @@ def check(path: str, app_id: str, ign: str, region: str):
             error_list.append("入力されたアプリケーションIDは無効です")
         elif data["error"]["message"] == "INVALID_SEARCH":
             error_list.append("入力されたIGNは無効です")
-    
+
     elif data["status"] == "ok":
         if data["meta"]["count"] == 0:
             error_list.append("存在しないIGNです")
@@ -65,10 +66,11 @@ def check(path: str, app_id: str, ign: str, region: str):
 
     return result, error_list, account_id
 
+
 def save_config(path: str, app_id: str, account_id: str, region: str):
     """
     Save config in ini file.
-    
+
     Parameters
     ----------
     path : str
@@ -89,6 +91,7 @@ region : {}""".format(path, app_id, account_id, region)
     with open('config.ini', 'w', encoding="utf-8") as ini_file:
         ini_file.write(config)
 
+
 @route('/static/<file_path:path>')
 def static(file_path):
     """
@@ -96,9 +99,11 @@ def static(file_path):
     """
     return static_file(file_path, root='../static')
 
+
 @route('/setting')
 def setting():
     return template('setting.html', errorMessage="")
+
 
 @post('/setting')
 def do_setting():
@@ -136,7 +141,7 @@ def do_setting():
               run.batで起動することができます。<br>
             </body>
             </html>"""
-    
+
     error_message = ""
     for error in error_list:
         error_message += "ERROR!: {}\n".format(error)
@@ -146,4 +151,3 @@ def do_setting():
 
 
 run(host='localhost', port=8080, debug=True)
-

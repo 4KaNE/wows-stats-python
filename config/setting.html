@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style type="text/css">
     body {
@@ -7,21 +8,26 @@
       color: #DCDDDE;
       text-align: center;
     }
+
     h3 {
-        color: #EEA34A
+      color: #EEA34A
     }
-    #errorMessage{
-        color: #ff0000;
+
+    #errorMessage {
+      color: #ff0000;
     }
+
     #table {
       /* width: 800px;  
       margin: 0 auto; */
       margin-left: auto;
       margin-right: auto;
     }
+
     .title {
-        color: #EEA34A;
+      color: #EEA34A;
     }
+
     .input {
       -webkit-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
       -moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
@@ -32,18 +38,23 @@
       border-radius: 3px;
       width: 300px;
     }
+
     .input:focus {
-      border:solid 1px #EEA34A;
+      border: solid 1px #EEA34A;
     }
-    .input:focus::-webkit-input-placeholder { 
-      color:transparent; 
+
+    .input:focus::-webkit-input-placeholder {
+      color: transparent;
     }
-    input:focus:-moz-placeholder { 
-      color:transparent; 
+
+    input:focus:-moz-placeholder {
+      color: transparent;
     }
-    input:focus::-moz-placeholder { 
-      color:transparent; 
+
+    input:focus::-moz-placeholder {
+      color: transparent;
     }
+
     footer {
       position: fixed;
       bottom: 0px;
@@ -51,28 +62,33 @@
       width: 100%;
       margin-bottom: 10px;
     }
+
     footer #license {
       color: white;
       font-size: 10px;
       margin: 0 auto;
     }
-    
-    a:link { 
-      color: white; 
+
+    a:link {
+      color: white;
     }
-    a:visited { 
-      color: white; 
+
+    a:visited {
+      color: white;
     }
+
     a:hover {
-      color: #ff0000; 
+      color: #ff0000;
     }
-    a:active { 
-      color: #ff8000; 
+
+    a:active {
+      color: #ff8000;
     }
   </style>
-<link rel="icon" href="/static/images/Favicon.ico" />
-<title>initial setting</title>
+  <link rel="icon" href="/static/images/Favicon.ico" />
+  <title>initial setting</title>
 </head>
+
 <body>
   <h3>設定</h3>
   <p id="errorMessage">{{errorMessage}}</p>
@@ -87,11 +103,11 @@
       </tr>
       <tr>
         <td colspan="2"><a href="https://developers.wargaming.net/applications/">Developers Room</a>
-            で作成したアプリケーションIDを入力</td>
+          で作成したアプリケーションIDを入力</td>
       </tr>
       <tr>
         <td class="title">APP Key:</td>
-        <td><input class="input" name="appId" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"/></td>
+        <td><input class="input" name="appId" type="text" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" /></td>
       </tr>
       <tr>
         <td colspan="2">ゲーム内の名前</td>
@@ -106,11 +122,11 @@
       <tr>
         <td class="title">Region:</td>
         <td><select name="region">
-          <option value="asia">ASIA</option>
-          <option value="na">NA</option>
-          <option value="eu">EU</option>
-          <option value="ru">RU</option>
-        </select></td>
+            <option value="asia">ASIA</option>
+            <option value="na">NA</option>
+            <option value="eu">EU</option>
+            <option value="ru">RU</option>
+          </select></td>
       </tr>
 
     </table>
@@ -118,11 +134,11 @@
     <input value="登録" type="submit" />
   </form>
   <footer>
-        <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Please send request and bug report to 
-            <a href="https://github.com/4KaNE/wows-stats-python" target="_blank">GitHub</a>
-            or <a href="https://twitter.com/4KaNE_NiER" target="_blank">Twitter</a>.</p>
-    </footer>
+    <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please
+      send request and bug report to
+      <a href="https://github.com/4KaNE/wows-stats-python" target="_blank">GitHub</a>
+      or <a href="https://twitter.com/4KaNE_NiER" target="_blank">Twitter</a>.</p>
+  </footer>
 </body>
+
 </html>
