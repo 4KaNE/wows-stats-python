@@ -4,16 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
-  <script type="text/javascript">
-    function ChangeTab(tabname) {
-      document.getElementById('tab1').style.display = 'none';
-      document.getElementById('tab2').style.display = 'none';
-      document.getElementById('tab3').style.display = 'none';
-      document.getElementById('tab4').style.display = 'none';
-
-      document.getElementById(tabname).style.display = 'block';
-    }
-  </script>
+  <script type="text/javascript" src="/static/script/createTab.js"></script>
   <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
   <link rel="icon" href="/static/images/Favicon.ico" />
 
@@ -165,29 +156,13 @@
     </div>
   </section>
 
-  <script type="text/javascript">
-    ChangeTab('tab1');
-  </script>
   <footer>
     <p id="license">The MIT License (MIT) Copyright (c) 2018 4KaNE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please
       send request and bug report to
       <a href="https://github.com/4KaNE/wows-stats-python" target="_blank">GitHub</a>
       or <a href="https://twitter.com/4KaNE_NiER" target="_blank">Twitter</a>.</p>
   </footer>
-  <script>
-    const vm = new Vue({
-      el: '#app',
-      data: {
-        wsdata: {},
-        ws: new WebSocket("ws://localhost:8080/websocket")
-      },
-      mounted: function () {
-        this.ws.onmessage = (evt) => {
-          this.wsdata = JSON.parse(evt.data)
-        }
-      }
-    })
-  </script>
+  <script type="text/javascript" src="static/script/websocket.js"></script>
 </body>
 
 </html>
