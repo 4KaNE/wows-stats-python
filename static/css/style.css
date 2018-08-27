@@ -90,7 +90,7 @@ div.tab p {
   margin: 0.5em; 
 }
 
-#sortable-li {
+.sortable-li {
 	padding: 0;
 	list-style-type: none;
   width: 50%;}
@@ -105,20 +105,20 @@ table {
 }
 
 /* 味方/敵, 艦別戦績, 総合戦績 */
-#description_table{
+.description_table{
   margin-top: 8px;
 }
 /* チーム */
-#description_team {
+.description_team {
   width: 233px;
 }
 /* 艦別戦績 */
-#description_ship {
-  width: 846;
+.description_ship {
+  width: 853px;
 }
 /* 全体戦績 */
-#description_all {
-  width: 223;
+.description_all {
+  width: 224px;
 }
 
 /* 罫線の設定 */
@@ -130,138 +130,138 @@ table th, table td {
 
 
 /* クラン列 */
-#clan_th {
+.clan_th {
   width: 55px;
   text-align: center;
 }
-#clan_td {
+.clan_td {
   text-align: center;
 }
 /* IGN列 */
-#ign_th {
+.ign_th {
   width: 175px;
   text-align: center;
 }
-#ign_td {
-  text-align: right;
+.ign_td {
+  text-align: left;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* Tier列 */
-#tier_th {
+.tier_th {
   width: 22px;
   text-align: center;
 }
-#tier_td {
-  text-align: right;
+.tier_td {
+  text-align: center;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 艦種列 */
-#shipclass_th {
+.shipclass_th {
   width: 50px;
   text-align: center;
 }
-#shipclass_td {
+.shipclass_td {
   text-align: center;
 }
 /* 艦名列 */
-#shipname_th {
+.shipname_th {
   width: 180px;
   text-align: center;
 }
-#shipname_td {
-  text-align: right;
+.shipname_td {
+  text-align: left;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 戦闘力列 */
-#combatpower_th {
-  width: 80px;
+.combatpower_th {
+  width: 85px;
   text-align: center;
 }
-#combatpower_td {
+.combatpower_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* ダメージ列 */
-#damage_th {
-  width: 60px;
+.damage_th {
+  width: 63px;
   text-align: center;
 }
-#damage_td {
+.damage_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* K/D列 */
-#kd_th {
-  width: 45px;
+.kd_th {
+  width: 47px;
   text-align: center;
 }
-#kd_td {
+.kd_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 勝率列 */
-#winrate_th {
-  width: 55px;
+.winrate_th {
+  width: 60px;
   text-align: center;
 }
-#winrate_td {
+.winrate_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;  
 }
 /* 生存率列 */
-#survive_th {
-  width: 90px;
+.survive_th {
+  width: 93px;
   text-align: center;
 }
-#survive_td {
-  text-align: right;
+.survive_td {
+  text-align: center;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 撃墜列 */
-#shootdown_th {
+.shootdown_th {
   width: 35px;
   text-align: center;
 }
-#shootdown_td {
+.shootdown_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 経験値列 */
-#exp_th {
+.exp_th {
   width: 45px;
   text-align: center;
 }
-#exp_td {
+.exp_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* 戦闘数列 */
-#battlenumber_th {
+.battlenumber_th {
   width: 55px;
   text-align: center;
 }
-#battlenumber_td {
+.battlenumber_td {
   text-align: right;
   padding-left: 3px;
   padding-right: 3px;
 }
 /* ランク列 */
-#rank_th {
+.rank_th {
   width: 55px;
   text-align: center;
 }
-#rank_td {
-  text-align: right;
+.rank_td {
+  text-align: center;
   padding-left: 3px;
   padding-right: 3px;
 }
