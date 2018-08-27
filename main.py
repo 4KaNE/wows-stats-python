@@ -37,13 +37,15 @@ def handle_websocket():
 
     if not websocket:
         abort(400, 'Expected WebSocket request.')
+    count = 0
 
     while True:
+        count += 1
+        data["map_name"] = count
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():
                 now_time = datetime.strftime(datetime.now(), '%H:%M:%S')
-                print(now_time)
                 client.ws.send(dumps(data))
 
         except WebSocketError:

@@ -580,6 +580,6 @@
             "winning_survive": 95
         }
     ],
-    "map_name": "安息の地",
+    "map_name": 0,
     "title": "wows-stats-python"
 }
