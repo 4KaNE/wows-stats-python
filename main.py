@@ -27,7 +27,7 @@ def static(file_path):
 def handle_websocket():
     """
     WebSocket Handler
-    Return count once every 3 seconds
+    Return data once every 5 seconds
     """
     websocket = request.environ.get('wsgi.websocket')
 
