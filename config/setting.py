@@ -93,7 +93,7 @@ region : {}""".format(path, app_id, account_id, region)
 
 @route('/setting')
 def setting():
-    return template('setting.tpl', errorMessage="")
+    return template('setting.html', errorMessage="")
 
 @post('/setting')
 def do_setting():
@@ -101,7 +101,7 @@ def do_setting():
     app_id = request.forms.appId
     region = request.forms.region
     ign = request.forms.ign
-    no_value = template('setting.tpl', errorMessage="全ての欄に入力してください")
+    no_value = template('setting.html', errorMessage="全ての欄に入力してください")
     if wows_path == "" or app_id == "" or ign == "":
         return no_value
 
@@ -137,7 +137,7 @@ def do_setting():
         error_message += "ERROR!: {}\n".format(error)
 
     else:
-        return template('setting.tpl', errorMessage=error_message)
+        return template('setting.html', errorMessage=error_message)
 
 
 run(host='localhost', port=8080, debug=True)
