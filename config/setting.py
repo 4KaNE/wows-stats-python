@@ -2,12 +2,11 @@
 from os.path import isdir, isfile
 import json
 import webbrowser as web
-from bottle import route, run, post, template, request, get
+from bottle import route, run, post, template, request, get, static_file
 import requests
 
 
 web.open('http://localhost:8080/setting')
-
 
 def check(path: str, app_id: str, ign: str, region: str):
     """
@@ -90,6 +89,12 @@ region : {}""".format(path, app_id, account_id, region)
     with open('config.ini', 'w', encoding="utf-8") as ini_file:
         ini_file.write(config)
 
+@route('/static/<file_path:path>')
+def static(file_path):
+    """
+    Returning static file when accessing localhost:8080/static/
+    """
+    return static_file(file_path, root='../static')
 
 @route('/setting')
 def setting():
