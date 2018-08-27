@@ -7,4 +7,3 @@ function ChangeTab(tabname) {
     document.getElementById(tabname).style.display = 'block';
 }
 
-ChangeTab('tab1');
