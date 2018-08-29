@@ -19,11 +19,47 @@ class APIWrapper():
         self.region = region
         self.retry = 0.1
 
+    def api_caller(self, url):
+        """
+        Fetch data from the API using the received request URL
+        If API restriction error returns, retry for up to 5 times
+
+        Parameters
+        ----------
+        url : str
+            URL for API request
+        returns
+        ----------
+        data : dict
+            Data returned from the API
+            If the request fails, None is returned
+        """
+        count = 0
+        while count < 5:
+            count += 1
+            try:
+                result = requests.get(url)
+            except:
+                sleep(self.retry)
+                data == None
+                continue
+
+            data = json.loads(result.text)
+            if data["status"] == "error":
+                if data["error"]["message"] == "REQUEST_LIMIT_EXCEEDED":
+                    print("API制限")
+                    sleep(self.retry)
+                    continue
+
+            break
+
+        return data
+            
+
     def fetch_accountid(self, ign: str) -> str:
         """
         fetch account id using ign
-        If API restriction error returns, retry for up to 5 times
-
+        
         Parameters
         ----------
         ign : str
@@ -39,29 +75,19 @@ class APIWrapper():
                ?application_id={application_id}&search={ign}"
         url = api.format(region=self.region, application_id=self.app_id,\
                          ign=ign)
-        result = requests.get(url)
-        data = json.loads(result.text)
+        data = self.api_caller(url)
         account_id = None
-        count = 0
-        while count < 5:
-            count += 1
-            if data["status"] == "error":
-                print("エラー")
-                if data["error"]["message"] == "REQUEST_LIMIT_EXCEEDED":
-                    print("API制限")
-                    sleep(self.retry)
-                    continue
-                else:
-                    account_id = None
-                    break
+        if data is None:
+            return account_id
 
-            elif data["meta"]["count"] == 0:
+        elif data["status"] == "error":
+            account_id = None        
+        elif data["status"] == "ok":
+            if data["meta"]["count"] == 0:
                 print("プレイヤーが存在しない")
-                account_id = None
-                break
-
-            elif data["status"] == "ok":
+                account_id = None        
+            else:
                 account_id = data["data"][0]["account_id"]
-                break
 
         return account_id
+
