@@ -40,6 +40,9 @@ def handle_websocket():
 
     while True:
         count += 1
+        if count % 2 == 1:
+            print("奇数")
+            continue
         data["map_name"] = count
         try:
             handler = websocket.handler
@@ -50,7 +53,7 @@ def handle_websocket():
         except WebSocketError:
             break
 
-        sleep(10)
+        sleep(3)
 
 @APP.route('/')
 def top():
