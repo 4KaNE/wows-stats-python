@@ -22,6 +22,7 @@ class APIWrapper():
     def fetch_accountid(self, ign: str) -> str:
         """
         fetch account id using ign
+        If API restriction error returns, retry for up to 5 times
 
         Parameters
         ----------
@@ -32,7 +33,7 @@ class APIWrapper():
         ----------
         account_id : str
             user's account id
-            If IGN does not exist, None is returned
+            If IGN does not exist or if some error occurs, None is returned
         """
         api = "https://api.worldofwarships.{region}/wows/account/list/\
                ?application_id={application_id}&search={ign}"
