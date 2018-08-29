@@ -6,7 +6,6 @@ from json import load, dumps
 from json.decoder import JSONDecodeError
 
 from bottle import route, run, static_file, request, Bottle, abort
-from bottle import TEMPLATE_PATH, jinja2_template as template
 
 from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
