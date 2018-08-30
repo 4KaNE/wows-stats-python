@@ -60,6 +60,28 @@ class APIWrapper():
 
         return data
 
+    def fetch_ship_encyclopedia(self):
+        """
+        
+        """
+        ship_data = {}
+        count = 0
+        while True:
+            count += 1
+            print(count)
+            api = "https://api.worldofwarships.{region}/wows/encyclopedia/ships/\
+                    ?application_id={app_id}&page_no={page}"
+            url = api.format(region=self.region, app_id=self.app_id, page=count)
+            data = self.api_caller(url)
+            if data["status"] == "error":
+                break
+            ship_data.update(data["data"])
+        
+        with open("ship_info.json", mode="w", encoding="utf-8_sig") as json_file:
+            json.dump(ship_data, json_file, ensure_ascii=False, indent=4, \
+                      sort_keys=True, separators=(',', ': '))
+            
+
     def fetch_accountid(self, ign):
         """
         fetch account id using ign
@@ -266,6 +288,7 @@ class APIWrapper():
 
         return data
 
+
 if __name__ == '__main__':
     # 連結時のconfigファイル読み込みはmain.pyで行う
     # VSCode上で実行する際はパスをmain.pyからの相対パスに変更
@@ -274,6 +297,8 @@ if __name__ == '__main__':
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     AW = APIWrapper(app_id=app_id, region=region)
+    print(AW.fetch_ship_encyclopedia())
+    """
     IGN_LIST = ["Akane_Kotonoha"]
     for ign in IGN_LIST:
         acc_id = AW.fetch_accountid(ign)
@@ -292,3 +317,4 @@ if __name__ == '__main__':
         # クランタグ
         print("--"*30)
         print(AW.fetch_clan_tag(clan_id))
+    """
