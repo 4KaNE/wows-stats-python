@@ -10,7 +10,7 @@ class APIWrapper():
     Class wrapping the WoWS API
     """
 
-    def __init__(self, app_id: str, region: str, retry=0.1):
+    def __init__(self, app_id, region, retry=0.1):
         """
         app_id : str
             Application id for calling API
@@ -25,7 +25,7 @@ class APIWrapper():
         self.region = region
         self.retry = retry
 
-    def api_caller(self, url: str) -> dict:
+    def api_caller(self, url):
         """
         Fetch data from the API using the received request URL
         If API restriction error returns, retry for up to 5 times
@@ -60,7 +60,7 @@ class APIWrapper():
 
         return data
 
-    def fetch_accountid(self, ign: str) -> int:
+    def fetch_accountid(self, ign):
         """
         fetch account id using ign
 
@@ -93,7 +93,7 @@ class APIWrapper():
 
         return account_id
 
-    def fetch_personal_data(self, account_id: int or str) -> dict:
+    def fetch_personal_data(self, account_id):
         """
         fetch player personal data using account id
 
@@ -126,7 +126,7 @@ class APIWrapper():
 
         return data
 
-    def fetch_rank_stats(self, account_id: int or str) -> dict:
+    def fetch_rank_stats(self, account_id):
         """
         fetch player's statistics in ranked battles
 
@@ -159,7 +159,7 @@ class APIWrapper():
 
         return data
 
-    def fetch_ship_stats(self, account_id: int or str, ship_id: int or str) -> dict:
+    def fetch_ship_stats(self, account_id, ship_id):
         """
         fetch statistics of player's ships
 
@@ -167,6 +167,8 @@ class APIWrapper():
         ----------
         account_id : int or str
             Player's account id
+        ship_id : int or str
+            Player's ship id
 
         Results
         ----------
