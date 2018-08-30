@@ -126,7 +126,7 @@ class APIWrapper():
 
         return data
 
-    def fetch_rank_stats(self, account_id):
+    def fetch_rank_stats(self, account_id: int or str) -> dict:
         """
         fetch player's statistics in ranked battles
 
@@ -134,7 +134,7 @@ class APIWrapper():
         ----------
         account_id : int or str
             Player's account id
-        
+
         Results
         ----------
         data : dict
@@ -159,13 +159,45 @@ class APIWrapper():
 
         return data
 
+    def fetch_ship_stats(self, account_id: int or str, ship_id: int or str) -> dict:
+        """
+        fetch statistics of player's ships
+
+        Parameters
+        ----------
+        account_id : int or str
+            Player's account id
+
+        Results
+        ----------
+        data : dict
+            statistics of player's ships.
+            Returns None if data can not be obtained 
+            or if performance records are not disclosed
+        """
+        api = "https://api.worldofwarships.{region}/wows/ships/stats/\
+                ?application_id={app_id}&ship_id={ship_id}&account_id={account_id}"
+        url = api.format(region=self.region, app_id=self.app_id,
+                         ship_id=ship_id, account_id=account_id)
+        data = self.api_caller(url)
+
+        if data is None:
+            pass
+        elif data["status"] != "ok":
+            data = None
+        elif data["meta"]["hidden"] is not None:
+            data = None
+        else:
+            data = data["data"][str(account_id)]
+
+        return data
 
 
 if __name__ == '__main__':
     # 連結時のconfigファイル読み込みはmain.pyで行う
     # VSCode上で実行する際はパスをmain.pyからの相対パスに変更
     INIFILE = configparser.SafeConfigParser()
-    INIFILE.read('./config/config.ini', 'UTF-8')
+    INIFILE.read('../config/config.ini', 'UTF-8')
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     AW = APIWrapper(app_id=app_id, region=region)
@@ -175,3 +207,5 @@ if __name__ == '__main__':
         print(AW.fetch_personal_data(acc_id))
         print("--"*30)
         print(AW.fetch_rank_stats(acc_id))
+        print("--"*30)
+        print(AW.fetch_ship_stats(acc_id, "4185797840"))
