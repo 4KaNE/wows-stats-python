@@ -25,7 +25,7 @@ class APIWrapper():
         self.region = region
         self.retry = retry
 
-    def api_caller(self, url):
+    def _api_caller(self, url):
         """
         Fetch data from the API using the received request URL
         If API restriction error returns, retry for up to 5 times
@@ -62,7 +62,13 @@ class APIWrapper():
 
     def fetch_ship_encyclopedia(self):
         """
+        fetch ship data from wows encyclopedia api
         
+        returns
+        ----------
+        ship_data : dict
+            All warship data acquired from API
+            It is better to extract only necessary data when using it 
         """
         ship_data = {}
         count = 0
@@ -72,7 +78,7 @@ class APIWrapper():
             api = "https://api.worldofwarships.{region}/wows/encyclopedia/ships/\
                     ?application_id={app_id}&page_no={page}"
             url = api.format(region=self.region, app_id=self.app_id, page=count)
-            data = self.api_caller(url)
+            data = self._api_caller(url)
             if data["status"] == "error":
                 break
             ship_data.update(data["data"])
@@ -80,6 +86,8 @@ class APIWrapper():
         with open("ship_info.json", mode="w", encoding="utf-8_sig") as json_file:
             json.dump(ship_data, json_file, ensure_ascii=False, indent=4, \
                       sort_keys=True, separators=(',', ': '))
+        
+        return ship_data
             
 
     def fetch_accountid(self, ign):
@@ -100,7 +108,7 @@ class APIWrapper():
         api = "https://api.worldofwarships.{region}/wows/account/list/\
                ?application_id={app_id}&search={ign}"
         url = api.format(region=self.region, app_id=self.app_id, ign=ign)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
         account_id = None
         if data is None:
             return account_id
@@ -136,7 +144,7 @@ class APIWrapper():
                 ?application_id={app_id}&account_id={account_id}"
         url = api.format(region=self.region,
                          app_id=self.app_id, account_id=account_id)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
 
         clan_id = None
 
@@ -171,7 +179,7 @@ class APIWrapper():
                 ?application_id={app_id}&clan_id={clan_id}"
         url = api.format(region=self.region,
                          app_id=self.app_id, clan_id=clan_id)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
 
         clan_tag = None
 
@@ -207,7 +215,7 @@ class APIWrapper():
                ?application_id={app_id}&account_id={account_id}"
         url = api.format(region=self.region,
                          app_id=self.app_id, account_id=account_id)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
 
         if data is None:
             pass
@@ -240,7 +248,7 @@ class APIWrapper():
                ?application_id={app_id}&account_id={account_id}"
         url = api.format(region=self.region,
                          app_id=self.app_id, account_id=account_id)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
 
         if data is None:
             pass
@@ -275,7 +283,7 @@ class APIWrapper():
                 ?application_id={app_id}&ship_id={ship_id}&account_id={account_id}"
         url = api.format(region=self.region, app_id=self.app_id,
                          ship_id=ship_id, account_id=account_id)
-        data = self.api_caller(url)
+        data = self._api_caller(url)
 
         if data is None:
             pass
@@ -297,8 +305,8 @@ if __name__ == '__main__':
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     AW = APIWrapper(app_id=app_id, region=region)
-    print(AW.fetch_ship_encyclopedia())
-    """
+    AW.fetch_ship_encyclopedia()
+
     IGN_LIST = ["Akane_Kotonoha"]
     for ign in IGN_LIST:
         acc_id = AW.fetch_accountid(ign)
@@ -317,4 +325,4 @@ if __name__ == '__main__':
         # クランタグ
         print("--"*30)
         print(AW.fetch_clan_tag(clan_id))
-    """
+
