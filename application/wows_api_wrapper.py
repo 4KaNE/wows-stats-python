@@ -8,19 +8,22 @@ import configparser
 class APIWrapper():
     """
     Class wrapping the WoWS API
-
-    Parameters
-    ----------
-    app_id : str
-        ApplicationId required for calling API
-    region : str
-        The server region to which the user belongs
     """
 
-    def __init__(self, app_id: str, region: str):
+    def __init__(self, app_id: str, region: str, retry=0.1):
+        """
+        app_id : str
+            Application id for calling API
+        region : str
+            The server region to which the user belongs
+            Any one of [asia, na, eu, ru]
+        retry : int of float
+            Number of seconds to wait when retrying API call
+            The default is 0.1 seconds
+        """
         self.app_id = app_id
         self.region = region
-        self.retry = 0.1
+        self.retry = retry
 
     def api_caller(self, url: str) -> dict:
         """
@@ -93,9 +96,10 @@ class APIWrapper():
 
 
 if __name__ == '__main__':
-    #連結時のconfigファイル読み込みはmain.pyで行う
+    # 連結時のconfigファイル読み込みはmain.pyで行う
+    # VSCode上で実行する際はパスをmain.pyからの相対パスに変更
     INIFILE = configparser.SafeConfigParser()
-    INIFILE.read('../config/config.ini', 'UTF-8')
+    INIFILE.read('./config/config.ini', 'UTF-8')
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     AW = APIWrapper(app_id=app_id, region=region)
