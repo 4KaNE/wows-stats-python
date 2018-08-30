@@ -60,7 +60,7 @@ class APIWrapper():
 
         return data
 
-    def fetch_accountid(self, ign: str) -> str:
+    def fetch_accountid(self, ign: str) -> int:
         """
         fetch account id using ign
 
@@ -71,14 +71,13 @@ class APIWrapper():
 
         returns
         ----------
-        account_id : str
+        account_id : int
             user's account id
             If IGN does not exist or if some error occurs, None is returned
         """
         api = "https://api.worldofwarships.{region}/wows/account/list/\
-               ?application_id={application_id}&search={ign}"
-        url = api.format(region=self.region, application_id=self.app_id,
-                         ign=ign)
+               ?application_id={app_id}&search={ign}"
+        url = api.format(region=self.region, app_id=self.app_id, ign=ign)
         data = self.api_caller(url)
         account_id = None
         if data is None:
@@ -94,6 +93,36 @@ class APIWrapper():
 
         return account_id
 
+    def fetch_personal_data(self, account_id: int or str) -> dict:
+        """
+        fetch player personal data using account id
+        Parameters
+        ----------
+        account_id : int or str
+            Player's account id
+
+        Results
+        ----------
+        data : dict
+            Competitive achievements of players
+        """
+        api = "https://api.worldofwarships.{region}/wows/account/info/\
+               ?application_id={app_id}&account_id={account_id}"
+        url = api.format(region=self.region,
+                         app_id=self.app_id, account_id=account_id)
+        data = self.api_caller(url)
+
+        if data is None:
+            pass
+        elif data["status"] != "ok":
+            data = None
+        elif data["meta"]["hidden"] is not None:
+            data = None
+        else:
+            data = data["data"][str(account_id)]
+
+        return data
+
 
 if __name__ == '__main__':
     # 連結時のconfigファイル読み込みはmain.pyで行う
@@ -105,4 +134,5 @@ if __name__ == '__main__':
     AW = APIWrapper(app_id=app_id, region=region)
     IGN_LIST = ["Akane_Kotonoha"]
     for ign in IGN_LIST:
-        print(AW.fetch_accountid(ign))
+        acc_id = AW.fetch_accountid(ign)
+        print(AW.fetch_personal_data(acc_id))
