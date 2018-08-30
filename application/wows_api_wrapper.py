@@ -2,6 +2,8 @@
 import json
 import requests
 from time import sleep
+import configparser
+
 
 class APIWrapper():
     """
@@ -14,12 +16,13 @@ class APIWrapper():
     region : str
         The server region to which the user belongs
     """
-    def __init__(self, app_id, region):
+
+    def __init__(self, app_id: str, region: str):
         self.app_id = app_id
         self.region = region
         self.retry = 0.1
 
-    def api_caller(self, url):
+    def api_caller(self, url: str) -> dict:
         """
         Fetch data from the API using the received request URL
         If API restriction error returns, retry for up to 5 times
@@ -34,6 +37,7 @@ class APIWrapper():
             Data returned from the API
             If the request fails, None is returned
         """
+        data = None
         count = 0
         while count < 5:
             count += 1
@@ -41,25 +45,22 @@ class APIWrapper():
                 result = requests.get(url)
             except:
                 sleep(self.retry)
-                data == None
                 continue
 
             data = json.loads(result.text)
             if data["status"] == "error":
                 if data["error"]["message"] == "REQUEST_LIMIT_EXCEEDED":
-                    print("API制限")
                     sleep(self.retry)
                     continue
 
             break
 
         return data
-            
 
     def fetch_accountid(self, ign: str) -> str:
         """
         fetch account id using ign
-        
+
         Parameters
         ----------
         ign : str
@@ -73,7 +74,7 @@ class APIWrapper():
         """
         api = "https://api.worldofwarships.{region}/wows/account/list/\
                ?application_id={application_id}&search={ign}"
-        url = api.format(region=self.region, application_id=self.app_id,\
+        url = api.format(region=self.region, application_id=self.app_id,
                          ign=ign)
         data = self.api_caller(url)
         account_id = None
@@ -81,13 +82,23 @@ class APIWrapper():
             return account_id
 
         elif data["status"] == "error":
-            account_id = None        
+            account_id = None
         elif data["status"] == "ok":
             if data["meta"]["count"] == 0:
-                print("プレイヤーが存在しない")
-                account_id = None        
+                account_id = None
             else:
                 account_id = data["data"][0]["account_id"]
 
         return account_id
 
+
+if __name__ == '__main__':
+    #連結時のconfigファイル読み込みはmain.pyで行う
+    INIFILE = configparser.SafeConfigParser()
+    INIFILE.read('../config/config.ini', 'UTF-8')
+    app_id = INIFILE["Config"]["application_id"]
+    region = INIFILE["Config"]["region"]
+    AW = APIWrapper(app_id=app_id, region=region)
+    IGN_LIST = ["Akane_Kotonoha"]
+    for ign in IGN_LIST:
+        print(AW.fetch_accountid(ign))
