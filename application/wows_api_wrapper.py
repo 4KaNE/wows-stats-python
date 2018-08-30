@@ -96,6 +96,7 @@ class APIWrapper():
     def fetch_personal_data(self, account_id: int or str) -> dict:
         """
         fetch player personal data using account id
+
         Parameters
         ----------
         account_id : int or str
@@ -104,7 +105,9 @@ class APIWrapper():
         Results
         ----------
         data : dict
-            Competitive achievements of players
+            Competitive achievements of players.
+            Returns None if data can not be obtained 
+            or if performance records are not disclosed
         """
         api = "https://api.worldofwarships.{region}/wows/account/info/\
                ?application_id={app_id}&account_id={account_id}"
@@ -123,6 +126,40 @@ class APIWrapper():
 
         return data
 
+    def fetch_rank_stats(self, account_id):
+        """
+        fetch player's statistics in ranked battles
+
+        Parameters
+        ----------
+        account_id : int or str
+            Player's account id
+        
+        Results
+        ----------
+        data : dict
+            Ranked battle achievements of players.
+            Returns None if data can not be obtained 
+            or if performance records are not disclosed
+        """
+        api = "https://api.worldofwarships.{region}/wows/seasons/accountinfo/\
+               ?application_id={app_id}&account_id={account_id}"
+        url = api.format(region=self.region,
+                         app_id=self.app_id, account_id=account_id)
+        data = self.api_caller(url)
+
+        if data is None:
+            pass
+        elif data["status"] != "ok":
+            data = None
+        elif data["meta"]["hidden"] is not None:
+            data = None
+        else:
+            data = data["data"][str(account_id)]
+
+        return data
+
+
 
 if __name__ == '__main__':
     # 連結時のconfigファイル読み込みはmain.pyで行う
@@ -136,3 +173,5 @@ if __name__ == '__main__':
     for ign in IGN_LIST:
         acc_id = AW.fetch_accountid(ign)
         print(AW.fetch_personal_data(acc_id))
+        print("--"*30)
+        print(AW.fetch_rank_stats(acc_id))
