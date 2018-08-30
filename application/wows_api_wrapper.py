@@ -194,6 +194,43 @@ class APIWrapper():
 
         return data
 
+    def fetch_clan_id(self, account_id):
+        """
+        fetch clan id useing account_id
+
+        Parameters
+        ----------
+        account_id : int or str
+            Player's account id
+
+        Results
+        ----------
+        clan_id : int or 
+            Clan id to which the user belongs
+            Returns None if data can not be obtained,
+            if performance records are not disclosed
+            or if user doesn't belongs clan
+        """
+        api = "https://api.worldofwarships.{region}/wows/clans/accountinfo/\
+                ?application_id={app_id}&account_id={account_id}"
+        url = api.format(region=self.region,
+                         app_id=self.app_id, account_id=account_id)
+        data = self.api_caller(url)
+
+        clan_id = None
+
+        if data is None:
+            pass
+        elif data["status"] != "ok":
+            pass
+        else:
+            if data["data"][str(account_id)] is None:
+                clan_id = None
+            else:
+                clan_id = data["data"][str(account_id)]["clan_id"]
+
+        return clan_id
+
 
 if __name__ == '__main__':
     # 連結時のconfigファイル読み込みはmain.pyで行う
@@ -203,11 +240,13 @@ if __name__ == '__main__':
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     AW = APIWrapper(app_id=app_id, region=region)
-    IGN_LIST = ["Akane_Kotonoha"]
+    IGN_LIST = ["Akane_Kotonoha", "akane000"]
     for ign in IGN_LIST:
         acc_id = AW.fetch_accountid(ign)
         print(AW.fetch_personal_data(acc_id))
         print("--"*30)
         print(AW.fetch_rank_stats(acc_id))
         print("--"*30)
-        print(AW.fetch_ship_stats(acc_id, "4185797840"))
+        #print(AW.fetch_ship_stats(acc_id, "4185797840"))
+        print("--"*30)
+        print(AW.fetch_clan_id(acc_id))
