@@ -10,6 +10,7 @@ class ShipInfo():
     Class handling ships data
     Include method to get each information from ship id
     """
+
     def __init__(self, app_id, region):
         """
         ship_dict : dict
@@ -33,70 +34,75 @@ class ShipInfo():
         print("Acquired {} ships information".format(count))
 
         self.ships_info_dict = ships_info_dict
-    
-    def name(self, ship_id):
+
+    def name(self, ship_id: int) -> str:
         """
+        str - ship name
         """
         ship_info = self.ships_info_dict.get(str(ship_id))
         if ship_info is None:
             name = None
         else:
             name = ship_info["name"]
-        
+
         return name
-    
-    def nation(self, ship_id):
+
+    def nation(self, ship_id: int) -> str:
         """
+        str - The nation to which the ship belongs
         """
         ship_info = self.ships_info_dict.get(str(ship_id))
         if ship_info is None:
             nation = None
         else:
             nation = ship_info["nation"]
-        
+
         return nation
 
-    def tier(self, ship_id):
+    def tier(self, ship_id: int) -> int:
         """
+        int - ship tier
         """
         ship_info = self.ships_info_dict.get(str(ship_id))
         if ship_info is None:
             tier = None
         else:
             tier = ship_info["tier"]
-        
+
         return tier
 
-    def ship_type(self, ship_id):
+    def ship_type(self, ship_id: int) -> str:
         """
+        str - ship type
         """
         ship_info = self.ships_info_dict.get(str(ship_id))
         if ship_info is None:
             ship_type = None
         else:
             ship_type = ship_info["type"]
-        
+
         return ship_type
 
-    def is_premium(self, ship_id):
+    def is_premium(self, ship_id: int) -> bool:
         """
+        bool - Whether it is a premium ship
         """
         ship_info = self.ships_info_dict.get(str(ship_id))
         if ship_info is None:
             is_premium = False
         else:
             is_premium = ship_info["is_premium"]
-        
+
         return is_premium
 
-
-    def dump(self):
+    def dump(self) -> None:
         """
         Output all information to json file
         """
         with open("ships_info.json", mode="w", encoding="utf-8_sig") as json_file:
-            json.dump(self.ships_info_dict, json_file, ensure_ascii=False, indent=4, \
+            json.dump(self.ships_info_dict, json_file, ensure_ascii=False, indent=4,
                       sort_keys=True, separators=(',', ': '))
+
 
 if __name__ == "__main__":
     INIFILE = configparser.SafeConfigParser()
@@ -104,7 +110,7 @@ if __name__ == "__main__":
     app_id = INIFILE["Config"]["application_id"]
     region = INIFILE["Config"]["region"]
     SI = ShipInfo(app_id, region)
-    #SI.dump()
+    # SI.dump()
     print(SI.name(3335501808))
     print(SI.nation(3335501808))
     print(SI.tier(3335501808))
