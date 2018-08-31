@@ -3,3 +3,4 @@
 *.ini
 .vscode/settings.json
 application/ship_info.json
+application/ships_info.json
