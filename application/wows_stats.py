@@ -9,5 +9,3 @@ class WoWsStats():
         self.stats_dict = {}
         self.friends_stats_list = []
         self.enemy_stats_list = []
-
-    
