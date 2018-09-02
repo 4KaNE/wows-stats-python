@@ -54,7 +54,7 @@ class WoWsStats():
         self.user_dict["clan"] = clan
 
     def add_combat_power(self, combat_power, num):
-        self.user_dict["combat_power".format(num)] = combat_power
+        self.user_dict["combat_power{}".format(num)] = combat_power
 
     def add_before_rank(self, before_rank):
         self.user_dict["before_rank"] = before_rank
@@ -64,6 +64,18 @@ class WoWsStats():
 
     def add_ship_name(self, ship_name):
         self.user_dict["ship_name"] = ship_name
+    
+    def add_tier(self, tier):
+        self.user_dict["tier"] = tier
+
+    def add_ship_wr(self, ship_wr):
+        self.user_dict["ship_wr"] = ship_wr
+
+    def add_ship_class(self, ship_class):
+        self.user_dict["ship_class"] = ship_class
+
+    def add_ship_nationality(self, ship_nationality):
+        self.user_dict["ship_nationality"] = ship_nationality
 
 if __name__ == "__main__":
     WWS = WoWsStats()
