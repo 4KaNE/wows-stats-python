@@ -86,14 +86,41 @@ class WoWsStats():
             now_rank = "**" if now_rank == 0 else now_rank
             self.user_dict["now_rank"] = now_rank
 
+    def add_ship_stats(self, ship_stats):
+        if ship_stats is None:
+            self.user_dict["damage"] = self.no_data
+            self.user_dict["kill_death"] = self.no_data
+            self.user_dict["ship_wr"] = self.no_data
+            self.user_dict["shot_down"] = self.no_data
+            self.user_dict["winning_survive"] = self.no_data
+            self.user_dict["losing_survive"] = self.no_data
+            self.user_dict["ship_exp"] = self.no_data
+            self.user_dict["ship_battle_number"] = self.no_data
+        else:
+            battles = ship_stats["pvp"]["battles"]
+            self.user_dict["ship_battle_number"] = battles
+            damage = ship_stats["pvp"]["damage_dealt"]
+            self.user_dict["damage"] = damage // battles
+            survive = ship_stats["pvp"]["survived_battles"]
+            frags = ship_stats["pvp"]["frags"]
+            self.user_dict["kill_death"] = round(frags / (battles - survive), 3) * 100
+            wins = ship_stats["pvp"]["wins"]
+            self.user_dict["ship_wr"] = round(wins / battles, 3) * 100
+            planes_killed = ship_stats["pvp"]["planes_killed"]
+            self.user_dict["shot_down"] = round(planes_killed / battles, 1)
+            survived_wins = ship_stats["pvp"]["survived_wins"]
+            self.user_dict["winning_survive"] = survived_wins // battles
+            survived_battles = ship_stats["pvp"]["survived_battles"]
+            self.user_dict["losing_survived"] = (survived_battles -survived_wins) // battles
+            exp = ship_stats["pvp"]["xp"]
+            self.user_dict["ship_exp"] = exp // battles
+
+
     def add_ship_name(self, ship_name):
         self.user_dict["ship_name"] = ship_name
     
     def add_tier(self, tier):
         self.user_dict["tier"] = tier
-
-    def add_ship_wr(self, ship_wr):
-        self.user_dict["ship_wr"] = ship_wr
 
     def add_ship_class(self, ship_class):
         self.user_dict["ship_class"] = ship_class
@@ -101,20 +128,6 @@ class WoWsStats():
     def add_ship_nationality(self, ship_nationality):
         self.user_dict["ship_nationality"] = ship_nationality
 
-    def add_shipexp(self, ship_exp):
-        self.user_dict["ship_exp"] = ship_exp
-
-    def add_kill_death(self, kill_death):
-        self.user_dict["kill_death"] = kill_death
-
-    def add_shot_down(self, shot_down):
-        self.user_dict["shot_down"] = shot_down
-
-    def add_winning_survive(self, winning_survive):
-        self.user_dict["winning_survive"] = winning_survive
-
-    def add_losing_survive(self, losing_survive):
-        self.user_dict["losing_survive"] = losing_survive
 
 if __name__ == "__main__":
     WWS = WoWsStats()

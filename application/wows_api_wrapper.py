@@ -292,7 +292,7 @@ class APIWrapper():
         elif data["meta"]["hidden"] is not None:
             data = None
         else:
-            data = data["data"][str(account_id)]
+            data = data["data"][str(account_id)][0]
 
         return data
 
