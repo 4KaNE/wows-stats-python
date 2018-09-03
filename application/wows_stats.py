@@ -14,6 +14,7 @@ class WoWsStats():
         self.tmp_friends_stats_list = []
         self.tmp_enemy_stats_list = []
         self.user_dict = {}
+        self.no_data = "--"
 
     def test(self):
         self.user_dict["test"] = "aaa"
@@ -58,10 +59,12 @@ class WoWsStats():
 
     def add_personal_data(self, personal_data):
         if personal_data is None:
-            self.user_dict[""] = "--"
+            self.user_dict["overall_battle_number"] = self.no_data
+            self.user_dict["overall_wr"] = self.no_data
+            self.user_dict["overall_exp"] = self.no_data
         else:
             battles = personal_data["statistics"]["pvp"]["battles"]
-            self.user_dict["overall_battle_number"] == battles
+            self.user_dict["overall_battle_number"] = battles
             wins = personal_data["statistics"]["pvp"]["wins"]
             self.user_dict["overall_wr"] = round(wins / battles, 3) *100
             exp = personal_data["statistics"]["pvp"]["exp"]
