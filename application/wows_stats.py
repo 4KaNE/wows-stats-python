@@ -56,17 +56,19 @@ class WoWsStats():
     def add_combat_power(self, combat_power, num):
         self.user_dict["combat_power{}".format(num)] = combat_power
 
+    def add_personal_data(self, personal_data):
+        if personal_data is None:
+            self.user_dict[""] = "--"
+        else:
+            battles = personal_data["statistics"]["pvp"]["battles"]
+            self.user_dict["overall_battle_number"] == battles
+            wins = personal_data["statistics"]["pvp"]["wins"]
+            self.user_dict["overall_wr"] = round(wins / battles, 3) *100
+            exp = personal_data["statistics"]["pvp"]["exp"]
+            self.user_dict["overall_exp"] = exp // battles
+
     def add_before_rank(self, before_rank):
         self.user_dict["before_rank"] = before_rank
-    
-    def add_overall_wr(self, overall_wr):
-        self.user_dict["overall_wr"] = overall_wr
-
-    def add_overall_exp(self, overall_exp):
-        self.user_dict["overall_exp"] = overall_exp
-
-    def add_overall_battle_number(self, overall_battle_number):
-        self.user_dict["overall_battle_number"] = overall_battle_number
 
     def add_now_rank(self, now_rank):
         self.user_dict["now_rank"] = now_rank
