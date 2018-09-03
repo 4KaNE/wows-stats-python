@@ -58,6 +58,15 @@ class WoWsStats():
 
     def add_before_rank(self, before_rank):
         self.user_dict["before_rank"] = before_rank
+    
+    def add_overall_wr(self, overall_wr):
+        self.user_dict["overall_wr"] = overall_wr
+
+    def add_overall_exp(self, overall_exp):
+        self.user_dict["overall_exp"] = overall_exp
+
+    def add_overall_battle_number(self, overall_battle_number):
+        self.user_dict["overall_battle_number"] = overall_battle_number
 
     def add_now_rank(self, now_rank):
         self.user_dict["now_rank"] = now_rank
@@ -76,6 +85,21 @@ class WoWsStats():
 
     def add_ship_nationality(self, ship_nationality):
         self.user_dict["ship_nationality"] = ship_nationality
+
+    def add_shipexp(self, ship_exp):
+        self.user_dict["ship_exp"] = ship_exp
+
+    def add_kill_death(self, kill_death):
+        self.user_dict["kill_death"] = kill_death
+
+    def add_shot_down(self, shot_down):
+        self.user_dict["shot_down"] = shot_down
+
+    def add_winning_survive(self, winning_survive):
+        self.user_dict["winning_survive"] = winning_survive
+
+    def add_losing_survive(self, losing_survive):
+        self.user_dict["losing_survive"] = losing_survive
 
 if __name__ == "__main__":
     WWS = WoWsStats()
