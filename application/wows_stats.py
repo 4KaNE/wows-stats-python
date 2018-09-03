@@ -14,6 +14,8 @@ class WoWsStats():
         self.tmp_friends_stats_list = []
         self.tmp_enemy_stats_list = []
         self.user_dict = {}
+        self.before_season = 9
+        self.now_season = 10
         self.no_data = "--"
 
     def test(self):
@@ -70,11 +72,19 @@ class WoWsStats():
             exp = personal_data["statistics"]["pvp"]["exp"]
             self.user_dict["overall_exp"] = exp // battles
 
-    def add_before_rank(self, before_rank):
-        self.user_dict["before_rank"] = before_rank
-
-    def add_now_rank(self, now_rank):
-        self.user_dict["now_rank"] = now_rank
+    def add_rank(self, rank_stats):
+        if rank_stats is None:
+            self.user_dict["before_rank"] = "**"
+            self.user_dict["now_rank"] = "**"
+        else:
+            before_rank = rank_stats["seasons"][str(self.before_season)]\
+                                    ["rank_info"]["max_rank"]
+            before_rank = "**" if before_rank == 0 else before_rank
+            self.user_dict["before_rank"] = before_rank
+            now_rank = rank_stats["seasons"][str(self.now_season)]\
+                                    ["rank_info"]["rank"]
+            now_rank = "**" if now_rank == 0 else now_rank
+            self.user_dict["now_rank"] = now_rank
 
     def add_ship_name(self, ship_name):
         self.user_dict["ship_name"] = ship_name
