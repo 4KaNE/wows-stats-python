@@ -47,7 +47,6 @@ def handle_websocket():
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():
-                now_time = datetime.strftime(datetime.now(), '%H:%M:%S')
                 client.ws.send(dumps(data))
 
         except WebSocketError:

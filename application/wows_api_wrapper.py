@@ -83,10 +83,6 @@ class APIWrapper():
                 break
             ship_data.update(data["data"])
         
-        with open("ship_info.json", mode="w", encoding="utf-8_sig") as json_file:
-            json.dump(ship_data, json_file, ensure_ascii=False, indent=4, \
-                      sort_keys=True, separators=(',', ': '))
-        
         return ship_data
             
 
@@ -292,7 +288,7 @@ class APIWrapper():
         elif data["meta"]["hidden"] is not None:
             data = None
         else:
-            data = data["data"][str(account_id)]
+            data = data["data"][str(account_id)][0]
 
         return data
 

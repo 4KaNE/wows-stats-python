@@ -2,7 +2,7 @@
 import json
 import configparser
 
-import wows_api_wrapper
+from . import wows_api_wrapper
 
 
 class ShipInfo():
