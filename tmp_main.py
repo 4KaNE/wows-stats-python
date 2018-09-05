@@ -22,7 +22,7 @@ for vehicle in ArenaInfo["vehicles"]:
     account_id = WAW.fetch_accountid(ign)
 
     clan_id = WAW.fetch_clan_id(account_id)
-    clan_tag = WAW.fetch_clan_tag(clan_id)
+    clan_tag = None if clan_id is None else WAW.fetch_clan_tag(clan_id)
     wst.add_clan(clan_tag)
 
     ship_id = vehicle["shipId"]
@@ -39,7 +39,6 @@ for vehicle in ArenaInfo["vehicles"]:
         print(wst.user_dict)
         continue
     else:
-        print(personal_data)
         wst.add_personal_data(personal_data)
         wst.add_ship_stats(WAW.fetch_ship_stats(account_id, ship_id))
         wst.add_rank(WAW.fetch_rank_stats(account_id))
