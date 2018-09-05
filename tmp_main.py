@@ -41,4 +41,7 @@ for vehicle in ArenaInfo["vehicles"]:
         wst.add_ship_stats(WAW.fetch_ship_stats(account_id, ship_id))
         wst.add_rank(WAW.fetch_rank_stats(account_id))
 
-    print(wst.user_dict)
+    wst.update_tmplist(vehicle["relation"])
+
+print(wst.tmp_friends_stats_list)
+print(wst.tmp_enemy_stats_list)

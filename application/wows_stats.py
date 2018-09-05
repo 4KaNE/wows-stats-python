@@ -134,6 +134,12 @@ class WoWsStats():
     def add_ship_nationality(self, ship_nationality):
         self.user_dict["ship_nationality"] = ship_nationality
 
+    def update_tmplist(self, relation):
+        if relation == 0 or relation == 1:
+            self.tmp_friends_stats_list.append(self.user_dict)
+        else:
+            self.tmp_enemy_stats_list.append(self.user_dict)
+
     def _division(self, num, denom, trunc=False):
         if trunc:
             try:
