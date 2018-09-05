@@ -70,7 +70,7 @@ class WoWsStats():
             self.user_dict["overall_battle_number"] = battles
             wins = personal_data["statistics"]["pvp"]["wins"]
             self.user_dict["overall_wr"] = round(
-                self._division(wins, battles)*100, 3)
+                self._division(wins, battles)*100, 1)
             exp = personal_data["statistics"]["pvp"]["xp"]
             self.user_dict["overall_exp"] = self._division(exp, battles, True)
 
@@ -106,19 +106,19 @@ class WoWsStats():
             survive = ship_stats["pvp"]["survived_battles"]
             frags = ship_stats["pvp"]["frags"]
             self.user_dict["kill_death"] = round(
-                self._division(frags, (battles - survive))*100, 3)
+                self._division(frags, (battles - survive))*100, 1)
             wins = ship_stats["pvp"]["wins"]
             self.user_dict["ship_wr"] = round(
-                self._division(wins, battles)*100, 3)
+                self._division(wins, battles)*100, 1)
             planes_killed = ship_stats["pvp"]["planes_killed"]
             self.user_dict["shot_down"] = round(
                 self._division(planes_killed, battles), 1)
             survived_wins = ship_stats["pvp"]["survived_wins"]
-            self.user_dict["winning_survive"] = self._division(
-                survived_wins, battles)
+            self.user_dict["winning_survive"] = round(self._division(
+                survived_wins, battles)*100, 1)
             survived_battles = ship_stats["pvp"]["survived_battles"]
-            self.user_dict["losing_survived"] = self._division(
-                (survived_battles - survived_wins), battles, True)
+            self.user_dict["losing_survived"] = round(self._division(
+                (survived_battles - survived_wins), battles, True)*100, 1)
             exp = ship_stats["pvp"]["xp"]
             self.user_dict["ship_exp"] = self._division(exp, battles, True)
 

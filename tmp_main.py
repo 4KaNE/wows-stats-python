@@ -36,8 +36,6 @@ for vehicle in ArenaInfo["vehicles"]:
         wst.add_personal_data(None)
         wst.add_ship_stats(None)
         wst.add_rank(None)
-        print(wst.user_dict)
-        continue
     else:
         wst.add_personal_data(personal_data)
         wst.add_ship_stats(WAW.fetch_ship_stats(account_id, ship_id))

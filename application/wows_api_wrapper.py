@@ -44,7 +44,6 @@ class APIWrapper():
         count = 0
         while count < 5:
             count += 1
-            print("APIコール{}回目".format(count))
             try:
                 result = requests.get(url)
             except:
