@@ -16,16 +16,19 @@ with open("tempArenaInfo.json", "r", encoding="utf-8_sig") as json_file:
 wst = wows_stats.WoWsStats()
 
 for vehicle in ArenaInfo["vehicles"]:
-    ign = vehicle["name"]
-    ship_id = vehicle["shipId"]
     wst.init_user_dict()
+    ign = vehicle["name"]
     wst.add_ign(ign)
     account_id = WAW.fetch_accountid(ign)
+
     clan_id = WAW.fetch_clan_id(account_id)
     clan_tag = WAW.fetch_clan_tag(clan_id)
     wst.add_clan(clan_tag)
-    ship_name = SI.name(ship_id)
-    wst.add_ship_name(ship_name)
+
+    ship_id = vehicle["shipId"]
+    wst.add_tier(SI.tier(ship_id))
+    wst.add_ship_name(SI.name(ship_id))
+    wst.add_ship_nationality(SI.nation(ship_id))
+    wst.add_ship_class(SI.ship_type(ship_id))
 
     print(wst.user_dict)
-

@@ -74,7 +74,6 @@ class APIWrapper():
         count = 0
         while True:
             count += 1
-            print(count)
             api = "https://api.worldofwarships.{region}/wows/encyclopedia/ships/\
                     ?application_id={app_id}&page_no={page}"
             url = api.format(region=self.region, app_id=self.app_id, page=count)

@@ -54,6 +54,7 @@ class WoWsStats():
         self.user_dict["ign"] = ign
 
     def add_clan(self, clan):
+        clan = self.no_data if clan is None else clan
         self.user_dict["clan"] = clan
 
     def add_combat_power(self, combat_power, num):
