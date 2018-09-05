@@ -67,3 +67,5 @@ tempArenaJsonでとりあえず表示の判定させるからリプレイファ�
 ship_dictクラスは艦艇idをもとに艦名、tier、艦種などを返すメソッドを内包する
 
 applecationフォルダはmoduleフォルダとかのほうがいいかも？
+
+config.iniの出力方法
