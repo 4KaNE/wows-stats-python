@@ -31,4 +31,17 @@ for vehicle in ArenaInfo["vehicles"]:
     wst.add_ship_nationality(SI.nation(ship_id))
     wst.add_ship_class(SI.ship_type(ship_id))
 
+    personal_data = WAW.fetch_personal_data(account_id)
+    if personal_data is None:
+        wst.add_personal_data(None)
+        wst.add_ship_stats(None)
+        wst.add_rank(None)
+        print(wst.user_dict)
+        continue
+    else:
+        print(personal_data)
+        wst.add_personal_data(personal_data)
+        wst.add_ship_stats(WAW.fetch_ship_stats(account_id, ship_id))
+        wst.add_rank(WAW.fetch_rank_stats(account_id))
+
     print(wst.user_dict)
