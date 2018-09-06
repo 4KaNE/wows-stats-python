@@ -115,7 +115,7 @@ class WoWsStats():
             survive = ship_stats["pvp"]["survived_battles"]
             frags = ship_stats["pvp"]["frags"]
             self.user_dict["kill_death"] = round(
-                self._division(frags, (battles - survive))*100, 1)
+                self._division(frags, (battles - survive)), 1)
             wins = ship_stats["pvp"]["wins"]
             self.user_dict["ship_wr"] = round(
                 self._division(wins, battles)*100, 1)
