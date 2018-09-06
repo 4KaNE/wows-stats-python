@@ -1,6 +1,7 @@
 """wows stats"""
 from operator import itemgetter
 
+
 class WoWsStats():
     """
     Class for storing information to be displayed 
@@ -48,6 +49,7 @@ class WoWsStats():
 
     def add_userid(self, user_id):
         self.user_dict["user_id"] = user_id
+
     def add_ship_id(self, ship_id):
         self.user_dict["ship_id"] = ship_id
 
@@ -142,24 +144,28 @@ class WoWsStats():
             self.tmp_enemy_stats_list.append(self.user_dict)
 
     def sort_tmplist(self):
-        self.friends_stats_list = sorted(self.tmp_friends_stats_list, key=itemgetter("user_id"))
-        self.friends_stats_list = sorted(self.friends_stats_list, key=itemgetter("ship_id"))
-        
+        sorted_list = sorted(self.tmp_friends_stats_list,
+                             key=lambda x: 0 if x["user_id"] is None else x["user_id"])
+        sorted_list = sorted(sorted_list, key=itemgetter("ship_id"))
+        sorted_list = sorted(sorted_list, key=self._sort_nation)
+        sorted_list = sorted(sorted_list, key=itemgetter("tier"))
+        self.friends_stats_list = sorted(sorted_list, key=self._sort_ship_type)
 
-    def _sort_ship_type(self, ship_type):
+    def _sort_ship_type(self, tmp_userdict):
+        ship_type = tmp_userdict["ship_class"]
         sort_dict = {
-            "AirCarrier": "a",
-            "Battleship": "b",
-            "Cruiser": "c",
-            "Destroyer": "d"
+            "AirCarrier": 1,
+            "Battleship": 2,
+            "Cruiser": 3,
+            "Destroyer": 4
         }
-        result = sort_dict.get(ship_type, "e")
-        return result
+        return sort_dict.get(ship_type, 5)
 
-    def _sort_nation(self, nation):
+    def _sort_nation(self, tmp_userdict):
         """
         Receive nation and return the corresponding order as int
         """
+        nation = tmp_userdict["ship_nationality"]
         order_dict = {
             "usa": 1,
             "japan": 2,
@@ -175,7 +181,6 @@ class WoWsStats():
         }
         return order_dict.get(nation, 12)
 
-
     def _division(self, num, denom, trunc=False):
         if trunc:
             try:
@@ -189,4 +194,3 @@ class WoWsStats():
                 result = 0
 
         return result
-
