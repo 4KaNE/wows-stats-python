@@ -27,21 +27,15 @@ for vehicle in ArenaInfo["vehicles"]:
     wst.add_clan(clan_tag)
 
     ship_id = vehicle["shipId"]
-    wst.add_ship_id(ship_id)
-    wst.add_tier(SI.tier(ship_id))
-    wst.add_ship_name(SI.name(ship_id))
-    wst.add_ship_nationality(SI.nation(ship_id))
-    wst.add_ship_class(SI.ship_type(ship_id))
+    wst.add_ship_info(ship_id, SI.tier(ship_id), SI.name(
+        ship_id), SI.nation(ship_id), SI.ship_type(ship_id))
 
     personal_data = WAW.fetch_personal_data(account_id)
-    if personal_data is None:
-        wst.add_personal_data(None)
-        wst.add_ship_stats(None)
-        wst.add_rank(None)
-    else:
-        wst.add_personal_data(personal_data)
-        wst.add_ship_stats(WAW.fetch_ship_stats(account_id, ship_id))
-        wst.add_rank(WAW.fetch_rank_stats(account_id))
+    ship_stats, rank_info = None if personal_data is None else WAW.fetch_ship_stats(
+        account_id, ship_id), WAW.fetch_rank_stats(account_id)
+    wst.add_personal_data(personal_data)
+    wst.add_ship_stats(ship_stats)
+    wst.add_rank(rank_info)
 
     wst.update_tmplist(vehicle["relation"])
 

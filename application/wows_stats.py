@@ -125,6 +125,13 @@ class WoWsStats():
             exp = ship_stats["pvp"]["xp"]
             self.user_dict["ship_exp"] = self._division(exp, battles, True)
 
+    def add_ship_info(self, ship_id, tier, ship_name, nation, ship_class):
+        self.add_ship_id(ship_id)
+        self.add_tier(tier)
+        self.add_ship_name(ship_name)
+        self.add_ship_nationality(nation)
+        self.add_ship_class(ship_class)
+
     def add_ship_name(self, ship_name):
         self.user_dict["ship_name"] = ship_name
 
