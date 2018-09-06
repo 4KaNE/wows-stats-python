@@ -24,7 +24,6 @@ class WoWsStats():
         stats_dict["map_name"] = map_name
         return stats_dict
 
-
     def init_user_dict(self):
         self.user_dict = {
             "before_rank": 0,
@@ -54,6 +53,7 @@ class WoWsStats():
         }
 
     def add_userid(self, user_id):
+        user_id = 0 if user_id is None else user_id
         self.user_dict["user_id"] = user_id
 
     def add_ship_id(self, ship_id):
@@ -123,11 +123,11 @@ class WoWsStats():
             self.user_dict["shot_down"] = round(
                 self._division(planes_killed, battles), 1)
             survived_wins = ship_stats["pvp"]["survived_wins"]
-            self.user_dict["winning_survive"] = round(self._division(
-                survived_wins, battles)*100, 1)
+            self.user_dict["winning_survive"] = self._division(
+                survived_wins, battles, True)
             survived_battles = ship_stats["pvp"]["survived_battles"]
-            self.user_dict["losing_survived"] = round(self._division(
-                (survived_battles - survived_wins), battles, True)*100, 1)
+            self.user_dict["losing_survived"] = self._division(
+                (survived_battles - survived_wins), battles, True)
             exp = ship_stats["pvp"]["xp"]
             self.user_dict["ship_exp"] = self._division(exp, battles, True)
 
@@ -145,7 +145,13 @@ class WoWsStats():
         self.user_dict["tier"] = tier
 
     def add_ship_class(self, ship_class):
-        self.user_dict["ship_class"] = ship_class
+        class_dict = {
+            "AirCarrier": "CV",
+            "Battleship": "BB",
+            "Cruiser": "CA/CL",
+            "Destroyer": "DD"
+        }
+        self.user_dict["ship_class"] = class_dict.get(ship_class)
 
     def add_ship_nationality(self, ship_nationality):
         self.user_dict["ship_nationality"] = ship_nationality
@@ -158,8 +164,7 @@ class WoWsStats():
 
     def sort_tmplist(self):
         for tmp_list in [self.friends_list, self.enemies_list]:
-            tmp_list.sort(
-                key=lambda x: 0 if x["user_id"] is None else x["user_id"])
+            tmp_list.sort(key=itemgetter("user_id"))
             tmp_list.sort(key=itemgetter("ship_id"))
             tmp_list.sort(key=self._sort_nation)
             tmp_list.sort(key=itemgetter("tier"))
@@ -168,10 +173,10 @@ class WoWsStats():
     def _sort_ship_type(self, tmp_userdict):
         ship_type = tmp_userdict["ship_class"]
         sort_dict = {
-            "AirCarrier": 1,
-            "Battleship": 2,
-            "Cruiser": 3,
-            "Destroyer": 4
+            "CV": 1,
+            "BB": 2,
+            "CA/CL": 3,
+            "DD": 4
         }
         return sort_dict.get(ship_type, 5)
 
