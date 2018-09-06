@@ -1,5 +1,5 @@
 """wows stats"""
-
+from operator import itemgetter
 
 class WoWsStats():
     """
@@ -17,12 +17,6 @@ class WoWsStats():
         self.before_season = 9
         self.now_season = 10
         self.no_data = "--"
-
-    def test(self):
-        self.user_dict["test"] = "aaa"
-
-    def hoge(self):
-        print(self.user_dict)
 
     def init_user_dict(self):
         self.user_dict = {
@@ -47,8 +41,12 @@ class WoWsStats():
             "ship_wr": 0.0,
             "shot_down": 0.0,
             "tier": 0,
-            "winning_survive": 0
+            "winning_survive": 0,
+            "user_id": 0
         }
+
+    def add_userid(self, user_id):
+        self.user_dict["user_id"] = user_id
 
     def add_ign(self, ign):
         self.user_dict["ign"] = ign
@@ -140,6 +138,40 @@ class WoWsStats():
         else:
             self.tmp_enemy_stats_list.append(self.user_dict)
 
+    def sort_tmplist(self):
+        self.friends_stats_list = sorted(self.tmp_friends_stats_list, key=itemgetter("user_id"))
+        
+
+    def _sort_ship_type(self, ship_type):
+        sort_dict = {
+            "AirCarrier": "a",
+            "Battleship": "b",
+            "Cruiser": "c",
+            "Destroyer": "d"
+        }
+        result = sort_dict.get(ship_type, "e")
+        return result
+
+    def _sort_nation(self, nation):
+        """
+        Receive nation and return the corresponding order as int
+        """
+        order_dict = {
+            "usa": 1,
+            "japan": 2,
+            "ussr": 3,
+            "germany": 4,
+            "uk": 5,
+            "poland": 6,
+            "pan_asia": 7,
+            "france": 8,
+            "italy": 9,
+            "commonwealth": 10,
+            "pan_america": 11
+        }
+        return order_dict.get(nation, 12)
+
+
     def _division(self, num, denom, trunc=False):
         if trunc:
             try:
@@ -154,11 +186,3 @@ class WoWsStats():
 
         return result
 
-
-if __name__ == "__main__":
-    WWS = WoWsStats()
-    WWS.hoge()
-    WWS.test()
-    WWS.hoge()
-    WWS.__init__()
-    WWS.hoge
