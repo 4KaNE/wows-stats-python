@@ -20,12 +20,14 @@ for vehicle in ArenaInfo["vehicles"]:
     ign = vehicle["name"]
     wst.add_ign(ign)
     account_id = WAW.fetch_accountid(ign)
+    wst.add_userid(account_id)
 
     clan_id = WAW.fetch_clan_id(account_id)
     clan_tag = None if clan_id is None else WAW.fetch_clan_tag(clan_id)
     wst.add_clan(clan_tag)
 
     ship_id = vehicle["shipId"]
+    wst.add_ship_id(ship_id)
     wst.add_tier(SI.tier(ship_id))
     wst.add_ship_name(SI.name(ship_id))
     wst.add_ship_nationality(SI.nation(ship_id))

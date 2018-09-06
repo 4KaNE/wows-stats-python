@@ -42,11 +42,14 @@ class WoWsStats():
             "shot_down": 0.0,
             "tier": 0,
             "winning_survive": 0,
-            "user_id": 0
+            "user_id": 0,
+            "ship_id": 0
         }
 
     def add_userid(self, user_id):
         self.user_dict["user_id"] = user_id
+    def add_ship_id(self, ship_id):
+        self.user_dict["ship_id"] = ship_id
 
     def add_ign(self, ign):
         self.user_dict["ign"] = ign
@@ -140,6 +143,7 @@ class WoWsStats():
 
     def sort_tmplist(self):
         self.friends_stats_list = sorted(self.tmp_friends_stats_list, key=itemgetter("user_id"))
+        self.friends_stats_list = sorted(self.friends_stats_list, key=itemgetter("ship_id"))
         
 
     def _sort_ship_type(self, ship_type):
