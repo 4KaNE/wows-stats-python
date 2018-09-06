@@ -10,8 +10,8 @@ class WoWsStats():
 
     def __init__(self):
         self.stats_dict = {}
-        self.tmp_friends_stats_list = []
-        self.tmp_enemy_stats_list = []
+        self.friends_list = []
+        self.enemies_list = []
         self.user_dict = {}
         self.before_season = 9
         self.now_season = 10
@@ -144,12 +144,12 @@ class WoWsStats():
 
     def update_tmplist(self, relation):
         if relation == 0 or relation == 1:
-            self.tmp_friends_stats_list.append(self.user_dict)
+            self.friends_list.append(self.user_dict)
         else:
-            self.tmp_enemy_stats_list.append(self.user_dict)
+            self.enemies_list.append(self.user_dict)
 
     def sort_tmplist(self):
-        for tmp_list in [self.tmp_friends_stats_list, self.tmp_enemy_stats_list]:
+        for tmp_list in [self.friends_list, self.enemies_list]:
             tmp_list.sort(
                 key=lambda x: 0 if x["user_id"] is None else x["user_id"])
             tmp_list.sort(key=itemgetter("ship_id"))
