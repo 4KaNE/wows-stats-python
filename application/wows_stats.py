@@ -10,8 +10,6 @@ class WoWsStats():
 
     def __init__(self):
         self.stats_dict = {}
-        self.friends_stats_list = []
-        self.enemy_stats_list = []
         self.tmp_friends_stats_list = []
         self.tmp_enemy_stats_list = []
         self.user_dict = {}
@@ -151,12 +149,13 @@ class WoWsStats():
             self.tmp_enemy_stats_list.append(self.user_dict)
 
     def sort_tmplist(self):
-        sorted_list = sorted(self.tmp_friends_stats_list,
-                             key=lambda x: 0 if x["user_id"] is None else x["user_id"])
-        sorted_list = sorted(sorted_list, key=itemgetter("ship_id"))
-        sorted_list = sorted(sorted_list, key=self._sort_nation)
-        sorted_list = sorted(sorted_list, key=itemgetter("tier"))
-        self.friends_stats_list = sorted(sorted_list, key=self._sort_ship_type)
+        for tmp_list in [self.tmp_friends_stats_list, self.tmp_enemy_stats_list]:
+            tmp_list.sort(
+                key=lambda x: 0 if x["user_id"] is None else x["user_id"])
+            tmp_list.sort(key=itemgetter("ship_id"))
+            tmp_list.sort(key=self._sort_nation)
+            tmp_list.sort(key=itemgetter("tier"))
+            tmp_list.sort(key=self._sort_ship_type)
 
     def _sort_ship_type(self, tmp_userdict):
         ship_type = tmp_userdict["ship_class"]

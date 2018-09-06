@@ -40,4 +40,4 @@ for vehicle in ArenaInfo["vehicles"]:
     wst.update_tmplist(vehicle["relation"])
 
 wst.sort_tmplist()
-print(wst.friends_stats_list)
+print(wst.tmp_friends_stats_list)
