@@ -17,6 +17,14 @@ class WoWsStats():
         self.now_season = 10
         self.no_data = "--"
 
+    def create_stats_dict(self, map_name):
+        stats_dict = {}
+        stats_dict["friends"] = self.friends_list
+        stats_dict["enemies"] = self.enemies_list
+        stats_dict["map_name"] = map_name
+        return stats_dict
+
+
     def init_user_dict(self):
         self.user_dict = {
             "before_rank": 0,
