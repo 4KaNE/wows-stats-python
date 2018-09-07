@@ -40,7 +40,7 @@ for vehicle in ArenaInfo["vehicles"]:
     wst.update_tmplist(vehicle["relation"])
 
 wst.sort_tmplist()
-data = wst.create_stats_dict(ArenaInfo["mapName"])
+data = wst.create_stats_dict(ArenaInfo["mapDisplayName"])
 with open("tmp_data.json", "w", encoding="utf-8_sig") as output_json:
     json.dump(data, output_json, ensure_ascii=False, indent=4, \
     sort_keys=True, separators=(',', ': '))

@@ -124,10 +124,10 @@ class WoWsStats():
                 self._division(planes_killed, battles), 1)
             survived_wins = ship_stats["pvp"]["survived_wins"]
             self.user_dict["winning_survive"] = self._division(
-                survived_wins, battles, True)
+                survived_wins*100, wins, True)
             survived_battles = ship_stats["pvp"]["survived_battles"]
-            self.user_dict["losing_survived"] = self._division(
-                (survived_battles - survived_wins), battles, True)
+            self.user_dict["losing_survive"] = self._division(
+                (survived_battles - survived_wins)*100, (battles - wins), True)
             exp = ship_stats["pvp"]["xp"]
             self.user_dict["ship_exp"] = self._division(exp, battles, True)
 

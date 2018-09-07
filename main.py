@@ -40,10 +40,9 @@ def handle_websocket():
 
     while True:
         count += 1
-        if count % 2 == 1:
-            print("奇数")
+        if count % 10 == 1:
+            print(count)
             continue
-        data["map_name"] = count
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():
