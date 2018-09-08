@@ -108,27 +108,27 @@ class WoWsStats():
             self.user_dict["ship_exp"] = self.no_data
             self.user_dict["ship_battle_number"] = self.no_data
         else:
-            battles = ship_stats["pvp"]["battles"]
+            battles = ship_stats["battles"]
             self.user_dict["ship_battle_number"] = battles
-            damage = ship_stats["pvp"]["damage_dealt"]
+            damage = ship_stats["damage_dealt"]
             self.user_dict["damage"] = self._division(damage, battles, True)
-            survive = ship_stats["pvp"]["survived_battles"]
-            frags = ship_stats["pvp"]["frags"]
+            survive = ship_stats["survived_battles"]
+            frags = ship_stats["frags"]
             self.user_dict["kill_death"] = round(
                 self._division(frags, (battles - survive)), 1)
-            wins = ship_stats["pvp"]["wins"]
+            wins = ship_stats["wins"]
             self.user_dict["ship_wr"] = round(
                 self._division(wins, battles)*100, 1)
-            planes_killed = ship_stats["pvp"]["planes_killed"]
+            planes_killed = ship_stats["planes_killed"]
             self.user_dict["shot_down"] = round(
                 self._division(planes_killed, battles), 1)
-            survived_wins = ship_stats["pvp"]["survived_wins"]
+            survived_wins = ship_stats["survived_wins"]
             self.user_dict["winning_survive"] = self._division(
                 survived_wins*100, wins, True)
-            survived_battles = ship_stats["pvp"]["survived_battles"]
+            survived_battles = ship_stats["survived_battles"]
             self.user_dict["losing_survive"] = self._division(
                 (survived_battles - survived_wins)*100, (battles - wins), True)
-            exp = ship_stats["pvp"]["xp"]
+            exp = ship_stats["xp"]
             self.user_dict["ship_exp"] = self._division(exp, battles, True)
 
     def add_ship_info(self, ship_id, tier, ship_name, nation, ship_class):

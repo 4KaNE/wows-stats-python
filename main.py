@@ -76,10 +76,11 @@ def handle_websocket():
     
     count = 0
     while True:
-        count += 1
         if count % 10 != 0:
             sleep(3)
+            count += 1
             continue
+        count += 1
 
         with open("tempArenaInfo.json", "r", encoding="utf-8_sig") as json_file:
             ArenaInfo = load(json_file)

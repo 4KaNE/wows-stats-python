@@ -5,6 +5,7 @@ from time import sleep
 import configparser
 import datetime
 
+
 class APIWrapper():
     """
     Class wrapping the WoWS API
@@ -60,7 +61,7 @@ class APIWrapper():
     def fetch_ship_encyclopedia(self):
         """
         fetch ship data from wows encyclopedia api
-        
+
         returns
         ----------
         ship_data : dict
@@ -73,14 +74,14 @@ class APIWrapper():
             count += 1
             api = "https://api.worldofwarships.{region}/wows/encyclopedia/ships/\
                     ?application_id={app_id}&page_no={page}"
-            url = api.format(region=self.region, app_id=self.app_id, page=count)
+            url = api.format(region=self.region,
+                             app_id=self.app_id, page=count)
             data = self._api_caller(url)
             if data["status"] == "error":
                 break
             ship_data.update(data["data"])
-        
+
         return ship_data
-            
 
     def fetch_accountid(self, ign):
         """
@@ -284,37 +285,6 @@ class APIWrapper():
         elif data["meta"]["hidden"] is not None:
             data = None
         else:
-            data = data["data"][str(account_id)][0]
+            data = data["data"][str(account_id)][0].get("pvp")
 
         return data
-
-
-if __name__ == '__main__':
-    # 連結時のconfigファイル読み込みはmain.pyで行う
-    # VSCode上で実行する際はパスをmain.pyからの相対パスに変更
-    INIFILE = configparser.SafeConfigParser()
-    INIFILE.read('../config/config.ini', 'UTF-8')
-    app_id = INIFILE["Config"]["application_id"]
-    region = INIFILE["Config"]["region"]
-    AW = APIWrapper(app_id=app_id, region=region)
-    AW.fetch_ship_encyclopedia()
-
-    IGN_LIST = ["Akane_Kotonoha"]
-    for ign in IGN_LIST:
-        acc_id = AW.fetch_accountid(ign)
-        # 全体戦績
-        print(AW.fetch_personal_data(acc_id))
-        print("--"*30)
-        # 鑑別戦績
-        print(AW.fetch_rank_stats(acc_id))
-        print("--"*30)
-        # ランク
-        print(AW.fetch_ship_stats(acc_id, "4185797840"))
-        print("--"*30)
-        # クランid
-        clan_id = AW.fetch_clan_id(acc_id)
-        print(clan_id)
-        # クランタグ
-        print("--"*30)
-        print(AW.fetch_clan_tag(clan_id))
-
