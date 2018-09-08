@@ -5,6 +5,7 @@ from datetime import datetime
 from time import sleep
 from json import load, dumps
 from json.decoder import JSONDecodeError
+import datetime
 
 from bottle import route, run, static_file, request, Bottle, abort
 
@@ -23,7 +24,6 @@ WAW = wows_api_wrapper.APIWrapper(app_id, region)
 
 def test(ArenaInfo):
     wst = wows_stats.WoWsStats()
-    
     for vehicle in ArenaInfo["vehicles"]:
         wst.init_user_dict()
         ign = vehicle["name"]
@@ -38,7 +38,7 @@ def test(ArenaInfo):
         ship_id = vehicle["shipId"]
         wst.add_ship_info(ship_id, SI.tier(ship_id), SI.name(
             ship_id), SI.nation(ship_id), SI.ship_type(ship_id))
-    
+
         personal_data = WAW.fetch_personal_data(account_id)
         ship_stats, rank_info = None if personal_data is None else WAW.fetch_ship_stats(
             account_id, ship_id), WAW.fetch_rank_stats(account_id)
@@ -71,26 +71,22 @@ def handle_websocket():
     Return data once every 5 seconds
     """
     websocket = request.environ.get('wsgi.websocket')
-    print("aaaa")
-
-    #json_path = "{}/application/data.json".format(BASE_DIR)
-    #with open(json_path, 'r', encoding="utf-8_sig") as json_file:
-    #    data = load(json_file)
-
     if not websocket:
         abort(400, 'Expected WebSocket request.')
+    
     count = 0
-
     while True:
         count += 1
         if count % 10 != 0:
-            print(count)
+            sleep(3)
             continue
 
         with open("tempArenaInfo.json", "r", encoding="utf-8_sig") as json_file:
             ArenaInfo = load(json_file)
 
+        print(datetime.datetime.now())
         data = test(ArenaInfo)
+        print(datetime.datetime.now())
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():
@@ -99,8 +95,6 @@ def handle_websocket():
         except WebSocketError:
             break
 
-        sleep(3)
-
 @APP.route('/')
 def top():
     """
@@ -108,5 +102,4 @@ def top():
     """
     return static_file('static/index.html', root='./')
 
-print("bbbb")
 SERVER.serve_forever()

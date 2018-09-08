@@ -3,14 +3,14 @@ import json
 import requests
 from time import sleep
 import configparser
-
+import datetime
 
 class APIWrapper():
     """
     Class wrapping the WoWS API
     """
 
-    def __init__(self, app_id, region, retry=0.1):
+    def __init__(self, app_id, region):
         """
         app_id : str
             Application id for calling API
@@ -23,7 +23,6 @@ class APIWrapper():
         """
         self.app_id = app_id
         self.region = region
-        self.retry = retry
 
     def _api_caller(self, url):
         """
@@ -47,13 +46,11 @@ class APIWrapper():
             try:
                 result = requests.get(url)
             except:
-                sleep(self.retry)
                 continue
 
             data = json.loads(result.text)
             if data["status"] == "error":
                 if data["error"]["message"] == "REQUEST_LIMIT_EXCEEDED":
-                    sleep(self.retry)
                     continue
 
             break
