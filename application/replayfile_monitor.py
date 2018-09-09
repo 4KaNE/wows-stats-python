@@ -32,7 +32,9 @@ class ReplayFileMonitor():
                     data = load(json_file)
                 except JSONDecodeError:
                     data = None
+                    self.flag = False
         except IOError:
             data = None
+            self.flag = False
 
         return data
