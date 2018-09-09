@@ -13,7 +13,7 @@ from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
 
-from application import wows_api_wrapper, ships_info, wows_stats
+from application import wows_api_wrapper, ships_info, wows_stats, replayfile_monitor
 
 INIFILE = configparser.SafeConfigParser()
 INIFILE.read('./config/config.ini', 'UTF-8')
@@ -56,6 +56,7 @@ def test(ArenaInfo):
 APP = Bottle()
 SERVER = WSGIServer(("0.0.0.0", 8080), APP, handler_class=WebSocketHandler)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RFM = replayfile_monitor.ReplayFileMonitor("C:/Games/World_of_Warships")
 
 @APP.route('/static/<file_path:path>')
 def static(file_path):
@@ -73,14 +74,12 @@ def handle_websocket():
     websocket = request.environ.get('wsgi.websocket')
     if not websocket:
         abort(400, 'Expected WebSocket request.')
-    
-    count = 0
+
     while True:
-        if count % 10 != 0:
+        if not RFM.check_arenainfo():
+            print("false")
             sleep(3)
-            count += 1
             continue
-        count += 1
 
         with open("tempArenaInfo.json", "r", encoding="utf-8_sig") as json_file:
             ArenaInfo = load(json_file)

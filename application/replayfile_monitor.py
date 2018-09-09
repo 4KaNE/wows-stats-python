@@ -1,6 +1,5 @@
 """replayfile_monitor"""
 from os import path
-from time import sleep
 
 
 class ReplayFileMonitor():
@@ -24,10 +23,3 @@ class ReplayFileMonitor():
             self.flag = False
 
         return change
-
-
-if __name__ == '__main__':
-    RFM = ReplayFileMonitor("C:/Games/World_of_Warships")
-    while True:
-        print(RFM.check_arenainfo())
-        sleep(10)
