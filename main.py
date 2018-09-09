@@ -22,7 +22,7 @@ region = INIFILE["config"]["region"]
 SI = ships_info.ShipInfo(app_id, region)
 WAW = wows_api_wrapper.APIWrapper(app_id, region)
 
-def test(ArenaInfo):
+def create_data(ArenaInfo):
     wst = wows_stats.WoWsStats()
     for vehicle in ArenaInfo["vehicles"]:
         wst.init_user_dict()
@@ -84,7 +84,7 @@ def handle_websocket():
         if arenainfo is None:
             sleep(3)
             continue
-        data = test(arenainfo)
+        data = create_data(arenainfo)
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():
