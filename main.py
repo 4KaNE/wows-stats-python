@@ -19,10 +19,17 @@ from application import wows_api_wrapper, ships_info, wows_stats, replayfile_mon
 
 INIFILE = configparser.SafeConfigParser()
 INIFILE.read('./config/config.ini', 'UTF-8')
-app_id = INIFILE["config"]["application_id"]
-region = INIFILE["config"]["region"]
-SI = ships_info.ShipInfo(app_id, region)
-WAW = wows_api_wrapper.APIWrapper(app_id, region)
+APP_ID = INIFILE["config"]["application_id"]
+REGION = INIFILE["config"]["region"]
+WOWS_PATH = INIFILE["config"]["wows_path"]
+
+SI = ships_info.ShipInfo(APP_ID, REGION)
+WAW = wows_api_wrapper.APIWrapper(APP_ID, REGION)
+RFM = replayfile_monitor.ReplayFileMonitor(WOWS_PATH)
+
+APP = Bottle()
+SERVER = WSGIServer(("0.0.0.0", 8080), APP, handler_class=WebSocketHandler)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def create_data(ArenaInfo):
     wst = wows_stats.WoWsStats()
@@ -62,11 +69,6 @@ def create_data(ArenaInfo):
     pbar.update(rem)
     pbar.close()
     return data
-
-APP = Bottle()
-SERVER = WSGIServer(("0.0.0.0", 8080), APP, handler_class=WebSocketHandler)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RFM = replayfile_monitor.ReplayFileMonitor("C:/Games/World_of_Warships")
 
 @APP.route('/static/<file_path:path>')
 def static(file_path):
