@@ -77,16 +77,14 @@ def handle_websocket():
 
     while True:
         if not RFM.check_arenainfo():
-            print("false")
             sleep(3)
             continue
 
-        with open("tempArenaInfo.json", "r", encoding="utf-8_sig") as json_file:
-            ArenaInfo = load(json_file)
-
-        print(datetime.datetime.now())
-        data = test(ArenaInfo)
-        print(datetime.datetime.now())
+        arenainfo = RFM.open_arenainfo()
+        if arenainfo is None:
+            sleep(3)
+            continue
+        data = test(arenainfo)
         try:
             handler = websocket.handler
             for client in handler.server.clients.values():

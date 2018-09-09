@@ -1,5 +1,6 @@
 """replayfile_monitor"""
 from os import path
+from json import load, JSONDecodeError
 
 
 class ReplayFileMonitor():
@@ -23,3 +24,15 @@ class ReplayFileMonitor():
             self.flag = False
 
         return change
+
+    def open_arenainfo(self):
+        try:
+            with open(self.arenainfo, "r", encoding="utf-8_sig") as json_file:
+                try:
+                    data = load(json_file)
+                except JSONDecodeError:
+                    data = None
+        except IOError:
+            data = None
+
+        return data
