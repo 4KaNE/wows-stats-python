@@ -13,6 +13,8 @@ from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
 
+from tqdm import tqdm
+
 from application import wows_api_wrapper, ships_info, wows_stats, replayfile_monitor
 
 INIFILE = configparser.SafeConfigParser()
@@ -24,6 +26,9 @@ WAW = wows_api_wrapper.APIWrapper(app_id, region)
 
 def create_data(ArenaInfo):
     wst = wows_stats.WoWsStats()
+    pbar = tqdm(total=100, desc="Loading")
+    ratio = 100 // len(ArenaInfo["vehicles"])
+    tortal = 0
     for vehicle in ArenaInfo["vehicles"]:
         wst.init_user_dict()
         ign = vehicle["name"]
@@ -47,10 +52,15 @@ def create_data(ArenaInfo):
         wst.add_rank(rank_info)
     
         wst.update_tmplist(vehicle["relation"])
-    
+        pbar.update(ratio)
+        tortal += ratio
+
     wst.sort_tmplist()
     data = wst.create_stats_dict(ArenaInfo["mapDisplayName"])
-    
+
+    rem = 100 - tortal
+    pbar.update(rem)
+    pbar.close()
     return data
 
 APP = Bottle()
