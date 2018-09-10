@@ -1,4 +1,7 @@
 """CP calculator"""
+import requests
+import ast
+from json import dump
 
 
 class CPCalculator():
@@ -7,7 +10,9 @@ class CPCalculator():
     """
 
     def __init__(self):
-        pass
+        pr_data = requests.get(
+            "https://asia.wows-numbers.com/personal/rating/expected/json/")
+        self.pr_dict = ast.literal_eval(pr_data.text)
 
     def combat_power(self, player_stats):
         """
@@ -42,3 +47,22 @@ class CPCalculator():
         combat_power = round(combat_power)
 
         return combat_power
+
+    def _calc_personal_rating(self, ship_id, actual_dmg, actual_wins, actual_frags):
+        """
+        Evaluation value used in WoWS Stats & Numbers
+        """
+        r_dmg = actual_dmg / self.pr_dict[str(ship_id)]["average_damage_dealt"]
+        r_wins = actual_wins / self.pr_dict[str(ship_id)]["win_rate"]
+        r_frags = actual_frags / self.pr_dict[str(ship_id)]["average_frags"]
+
+        n_dmg = max(0, (r_dmg - 0.4) / (1 - 0.4))
+        n_frags = max(0, (r_wins - 0.1) / (1 - 0.1))
+        n_wins = max(0, (r_frags - 0.7) / (1 - 0.7))
+
+        pr =  700 * n_dmg + 300 * n_frags + 150 * n_wins
+        result = round(pr)
+        return result
+
+if __name__ == '__main__':
+    CPC = CPCalculator()
