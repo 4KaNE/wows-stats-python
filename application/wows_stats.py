@@ -33,6 +33,7 @@ class WoWsStats():
             "damage": 0,
             "ign": "",
             "kill_death": 0.0,
+            "kill_ratio": 0.0,
             "losing_survive": 0,
             "myself_flag": 0,
             "now_rank": 0,
@@ -67,7 +68,7 @@ class WoWsStats():
         self.user_dict["clan"] = clan
 
     def add_combat_power(self, combat_power, num):
-        self.user_dict["combat_power{}".format(num)] = combat_power
+        self.user_dict["combat_power_{}".format(num)] = combat_power
 
     def add_personal_data(self, personal_data):
         if personal_data is None:
@@ -116,6 +117,8 @@ class WoWsStats():
             frags = ship_stats["frags"]
             self.user_dict["kill_death"] = round(
                 self._division(frags, (battles - survive)), 1)
+            self.user_dict["kill_ratio"] = round(
+                self._division(frags, battles), 2)
             wins = ship_stats["wins"]
             self.user_dict["ship_wr"] = round(
                 self._division(wins, battles)*100, 1)
