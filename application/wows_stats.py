@@ -67,7 +67,7 @@ class WoWsStats():
         self.user_dict["clan"] = clan
 
     def add_combat_power(self, combat_power, num):
-        self.user_dict["combat_power{}".format(num)] = combat_power
+        self.user_dict["combat_power_{}".format(num)] = combat_power
 
     def add_personal_data(self, personal_data):
         if personal_data is None:
