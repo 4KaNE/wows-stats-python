@@ -61,6 +61,7 @@ def create_data(ArenaInfo):
         wst.add_rank(rank_info)
 
         wst.add_combat_power(CPC.combat_power(wst.user_dict), 1)
+        wst.add_combat_power(CPC.personal_rating(wst.user_dict), 2)
 
         wst.update_tmplist(vehicle["relation"])
         pbar.update(ratio)

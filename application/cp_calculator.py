@@ -59,31 +59,24 @@ class CPCalculator():
         kill_ratio = player_stats["kill_ratio"]
         kill_ratio = kill_ratio if type(kill_ratio) in (int, float) else 0
 
-        result = self._calc_personal_rating(player_stats["ship_id"], damage, wins, kill_ratio)
+        result = self._calc_personal_rating(
+            player_stats["ship_id"], damage, wins, kill_ratio)
         return result
 
     def _calc_personal_rating(self, ship_id, actual_dmg, actual_wins, actual_frags):
         """
         Evaluation value used in WoWS Stats & Numbers
         """
-        r_dmg = actual_dmg / self.pr_dict["data"][str(ship_id)]["average_damage_dealt"]
+        r_dmg = actual_dmg / \
+            self.pr_dict["data"][str(ship_id)]["average_damage_dealt"]
         r_wins = actual_wins / self.pr_dict["data"][str(ship_id)]["win_rate"]
-        r_frags = actual_frags / self.pr_dict["data"][str(ship_id)]["average_frags"]
+        r_frags = actual_frags / \
+            self.pr_dict["data"][str(ship_id)]["average_frags"]
 
         n_dmg = max(0, (r_dmg - 0.4) / (1 - 0.4))
         n_frags = max(0, (r_wins - 0.1) / (1 - 0.1))
         n_wins = max(0, (r_frags - 0.7) / (1 - 0.7))
 
-        pr =  700 * n_dmg + 300 * n_frags + 150 * n_wins
+        pr = 700 * n_dmg + 300 * n_frags + 150 * n_wins
         result = round(pr)
         return result
-
-if __name__ == '__main__':
-    CPC = CPCalculator()
-    player_stats = {
-        "damage": 61757,
-        "kill_ratio": 1.07,
-        "ship_wr": 64.17,
-        "ship_id": 4282365648
-    }
-    print(CPC.personal_rating(player_stats))
