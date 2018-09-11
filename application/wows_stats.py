@@ -170,7 +170,7 @@ class WoWsStats():
             tmp_list.sort(key=itemgetter("user_id"))
             tmp_list.sort(key=itemgetter("ship_id"))
             tmp_list.sort(key=self._sort_nation)
-            tmp_list.sort(key=itemgetter("tier"))
+            tmp_list.sort(key=itemgetter("tier"), reverse=True)
             tmp_list.sort(key=self._sort_ship_type)
 
     def _sort_ship_type(self, tmp_userdict):

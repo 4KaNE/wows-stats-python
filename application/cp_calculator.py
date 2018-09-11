@@ -23,9 +23,9 @@ class CPCalculator():
         kd_ratio = player_stats["kill_death"]
         kd_ratio = kd_ratio if type(kd_ratio) in (int, float) else 0
         exp = player_stats["ship_exp"]
-        exp = exp if type(kd_ratio) in (int, float) else 0
+        exp = exp if type(exp) in (int, float) else 0
         tier = player_stats["tier"]
-        tier = tier if type(kd_ratio) in (int, float) else 0
+        tier = tier if type(tier) in (int, float) else 0
         result = self._calc_combat_power(
             player_stats["ship_class"], damage, kd_ratio, exp, tier
         )
