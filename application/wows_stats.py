@@ -89,8 +89,10 @@ class WoWsStats():
             self.user_dict["before_rank"] = "**"
             self.user_dict["now_rank"] = "**"
         else:
-            before_rank = rank_stats["seasons"][str(
-                self.before_season)]["rank_info"]["max_rank"]
+            before_season_stats = rank_stats["seasons"].get(
+                str(self.before_season))
+            before_rank = before_season_stats["rank_info"]["max_rank"] \
+                if before_season_stats is not None else None
             before_rank = "**" if before_rank == 0 else before_rank
             self.user_dict["before_rank"] = before_rank
             now_rank = rank_stats["seasons"][str(
